@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Falafelhuset | Autentisk falafel vid Linköpings universitet</title>
+  <meta name="description" content="Falafelhuset serverar Linköpings godaste falafel med färska råvaror och hemlagda tillbehör. Besök oss på Key-Huset vid universitetet.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#9C6F44', // Rich warm brown
+            secondary: '#F8F1E5', // Creamy parchment
+            accent: '#D4A59A', // Soft terracotta
+            dark: '#1E1E1E', // Deep charcoal
+            light: '#FFFCF8', // Warm white
+            gold: '#D4A017', // Warm golden accent
+            herb: '#6B8E23', // Olive green
+            spice: '#B22222', // Rich red
+            saffron: '#F4C430', // Vibrant saffron
+            turmeric: '#FFC72C', // Bright turmeric
+            bronze: '#CD7F32', // Metallic bronze
+            copper: '#B87333' // Warm copper
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            heading: ['"DM Serif Display"', 'serif'],
+            subheading: ['"Playfair Display"', 'serif'],
+            decorative: ['"Playfair Display"', 'serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-in',
+            'spin-slow': 'spin 8s linear infinite',
+            'bounce-slow': 'bounceSlow 2s infinite'
+          },
+          backgroundImage: {
+            'subtle-pattern': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C6F44' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+            'gold-pattern': "url('data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D4A017' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E')",
+            'arabic-pattern': "url('data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0V0zm10 10h80v80H10V10zm10 10h60v60H20V20zm10 10h40v40H30V30zm10 10h20v20H40V40z' fill='%239C6F44' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E')",
+            'oriental-pattern': "url('data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10' fill='none' stroke='%239C6F44' stroke-width='1' opacity='0.05'/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .menu-item {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(30,30,30,0.85) 0%, rgba(156,111,68,0.7) 100%);
+    }
+    
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44 0%, #D4A017 100%);
+      margin: 2rem auto;
+    }
+    
+    .falafel-shadow {
+      box-shadow: 0 15px 30px -10px rgba(156, 111, 68, 0.3);
+    }
+    
+    .ingredient-dots {
+      background-image: radial-gradient(#9C6F44 2px, transparent 2px);
+      background-size: 16px 16px;
+    }
+    
+    .floating-label {
+      transform: translateY(-50%);
+      left: 20px;
+    }
+    
+    input:focus + label, 
+    textarea:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label {
+      transform: translateY(-150%) scale(0.9);
+      background: white;
+      padding: 0 5px;
+    }
+    
+    .oriental-border {
+      border-bottom: 3px solid #9C6F44;
+      position: relative;
+    }
+    
+    .oriental-border:after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #D4A017;
+    }
+    
+    .floral-decoration {
+      position: relative;
+    }
+    
+    .floral-decoration:before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M20,10 Q30,0 40,10 T60,10 T80,10 T100,10" fill="none" stroke="%239C6F44" stroke-width="2"/></svg>');
+      background-repeat: no-repeat;
+    }
+
+    /* Enhanced Om Oss section */
+    .about-section {
+      background: linear-gradient(135deg, rgba(248, 241, 229, 0.8) 0%, rgba(255, 252, 248, 0.9) 100%);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark .about-section {
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(40, 40, 40, 0.9) 100%);
+    }
+    
+    .about-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="none" stroke="%239C6F44" stroke-width="1" opacity="0.1"/></svg>');
+      background-repeat: repeat;
+      opacity: 0.3;
+    }
+    
+    .about-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Refined opening hours section */
+    .hours-container {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 15px 30px rgba(156, 111, 68, 0.1);
+    }
+    .dark .hours-container {
+      background: rgba(30, 30, 30, 0.9);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hours-day {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(156, 111, 68, 0.1);
+    }
+    .dark .hours-day {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .hours-day:hover {
+      background: rgba(156, 111, 68, 0.05);
+    }
+    .dark .hours-day:hover {
+      background: rgba(212, 160, 23, 0.05);
+    }
+    
+    .current-day {
+      background: rgba(156, 111, 68, 0.1) !important;
+      border-left: 4px solid #9C6F44;
+    }
+    .dark .current-day {
+      background: rgba(212, 160, 23, 0.1) !important;
+      border-left-color: #D4A017;
+    }
+    
+    /* Improved CTA buttons */
+    .primary-cta {
+      background: linear-gradient(135deg, #9C6F44 0%, #B87333 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(156, 111, 68, 0.3);
+    }
+    .dark .primary-cta {
+      background: linear-gradient(135deg, #D4A017 0%, #CD7F32 100%);
+      box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+    }
+    
+    .primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(156, 111, 68, 0.4);
+    }
+    .dark .primary-cta:hover {
+      box-shadow: 0 8px 20px rgba(212, 160, 23, 0.4);
+    }
+    
+    .secondary-cta {
+      background: white;
+      color: #9C6F44;
+      border: 2px solid #9C6F44;
+    }
+    .dark .secondary-cta {
+      background: rgba(30, 30, 30, 0.8);
+      color: #D4A017;
+      border-color: #D4A017;
+    }
+    
+    .secondary-cta:hover {
+      background: #9C6F44;
+      color: white;
+    }
+    .dark .secondary-cta:hover {
+      background: #D4A017;
+      color: #1E1E1E;
+    }
+    
+    /* Decorative elements */
+    .oriental-divider {
+      position: relative;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017, #B87333);
+      margin: 2rem auto;
+      width: 80px;
+      border-radius: 2px;
+    }
+    
+    .oriental-divider:before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #9C6F44;
+      border-radius: 50%;
+      border: 2px solid #D4A017;
+    }
+    
+    /* New decorative elements */
+    .arabesque-corner {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .arabesque-corner:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 C60,60 40,60 0,100 Z" fill="%239C6F44" fill-opacity="0.05"/></svg>');
+      background-repeat: no-repeat;
+      background-position: top right;
+    }
+    
+    .spice-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 199, 44, 0.2);
+      border-radius: 50%;
+      color: #D4A017;
+      font-size: 18px;
+    }
+    
+    .menu-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #9C6F44 0%, #D4A017 50%, #B87333 100%);
+    }
+    
+    .price-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #9C6F44;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: rotate(5deg);
+    }
+    
+    .spice-dots {
+      background-image: radial-gradient(#B22222 1px, transparent 1px);
+      background-size: 10px 10px;
+    }
+    
+    .vegetarian-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(107, 142, 35, 0.9);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero-title:after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #D4A017, #B87333);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    
+    .hero-title:hover:after {
+      transform: scaleX(1);
+    }
+    
+    .menu-category {
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .menu-category:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017);
+    }
+    
+    /* New luxury elements */
+    .gold-border {
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+    }
+    
+    .gold-border:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      margin: -2px;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #9C6F44, #D4A017, #B87333);
+    }
+    
+    .metallic-text {
+      background: linear-gradient(to right, #D4A017, #CD7F32, #B87333);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .luxury-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .luxury-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+    
+    .luxury-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017, #B87333);
+    }
+    
+    .arabic-pattern-bg {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0 0h100v100H0V0zm10 10h80v80H10V10zm10 10h60v60H20V20zm10 10h40v40H30V30zm10 10h20v20H40V40z" fill="%239C6F44" fill-opacity="0.03" fill-rule="evenodd"/></svg>');
+    }
+    
+    .menu-item-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .menu-item-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(156, 111, 68, 0.3);
+    }
+    
+    .dish-image {
+      transition: transform 0.5s ease;
+    }
+    
+    .dish-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #9C6F44;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    
+    .floating-action-btn {
+      box-shadow: 0 10px 25px rgba(156, 111, 68, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .floating-action-btn:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 15px 30px rgba(156, 111, 68, 0.4);
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .testimonial-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #9C6F44, #D4A017);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(45deg, #9C6F44, #D4A017);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .instagram-feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    
+    .instagram-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1;
+    }
+    
+    .instagram-item img {
+      transition: transform 0.5s ease;
+    }
+    
+    .instagram-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .instagram-item:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(30,30,30,0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .instagram-item:hover:after {
+      opacity: 1;
+    }
+    
+    .instagram-item i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+    }
+    
+    .instagram-item:hover i {
+      opacity: 1;
+    }
+    
+    /* Animation for menu items */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-slide-up {
+      animation: slideUp 0.6s ease forwards;
+    }
+    
+    /* Delay animations */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    /* Dark mode toggle */
+    .dark-mode-toggle {
+      position: relative;
+      width: 50px;
+      height: 24px;
+      border-radius: 12px;
+      background: #9C6F44;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .dark-mode-toggle:after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    
+    .dark .dark-mode-toggle:after {
+      transform: translateX(26px);
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017);
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
+    
+    /* New luxury enhancements */
+    .oriental-frame {
+      position: relative;
+      padding: 2rem;
+    }
+    
+    .oriental-frame:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0,0 L100,0 L100,20 C80,20 60,0 40,0 C20,0 0,20 0,20 Z" fill="%239C6F44" fill-opacity="0.1"/></svg>');
+      background-repeat: repeat-x;
+    }
+    
+    .oriental-frame:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0,20 L100,20 L100,0 C80,0 60,20 40,20 C20,20 0,0 0,0 Z" fill="%239C6F44" fill-opacity="0.1"/></svg>');
+      background-repeat: repeat-x;
+    }
+    
+    .luxury-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .luxury-section:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="none" stroke="%239C6F44" stroke-width="1" opacity="0.03"/></svg>');
+      background-repeat: repeat;
+      z-index: -1;
+    }
+    
+    .gold-accent {
+      position: relative;
+    }
+    
+    .gold-accent:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017, #B87333);
+    }
+    
+    .menu-price {
+      font-family: 'DM Serif Display', serif;
+      color: #9C6F44;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .dark .menu-price {
+      color: #D4A017;
+    }
+    
+    .menu-category-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .menu-category-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017);
+    }
+    
+    .floating-logo {
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+      transition: all 0.5s ease;
+    }
+    
+    .floating-logo:hover {
+      transform: translateY(-5px) rotate(-5deg);
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+    
+    .hero-subtitle {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero-subtitle:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #D4A017, #B87333);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease;
+    }
+    
+    .hero-subtitle:hover:after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    .nav-container {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-container.scrolled {
+      background-color: rgba(255, 255, 255, 0.98) !important;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .dark .nav-container.scrolled {
+      background-color: rgba(30, 30, 30, 0.98) !important;
+    }
+    
+    .hero-cta {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(156, 111, 68, 0.4);
+    }
+    
+    .feature-card {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(156, 111, 68, 0.2);
+    }
+    
+    .feature-icon {
+      transition: all 0.5s ease;
+    }
+    
+    .feature-card:hover .feature-icon {
+      transform: rotate(15deg) scale(1.1);
+      color: #9C6F44;
+    }
+    
+    .dark .feature-card:hover .feature-icon {
+      color: #D4A017;
+    }
+    
+    .instagram-hover {
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .instagram-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(156, 111, 68, 0.3);
+    }
+    
+    .testimonial-quote {
+      position: relative;
+    }
+    
+    .testimonial-quote:before {
+      content: """;
+      position: absolute;
+      top: -20px;
+      left: -15px;
+      font-size: 60px;
+      color: rgba(156, 111, 68, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .dark .testimonial-quote:before {
+      color: rgba(212, 160, 23, 0.1);
+    }
+    
+    .contact-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: linear-gradient(to bottom, #9C6F44, #D4A017);
+      transition: height 0.3s ease;
+    }
+    
+    .contact-card:hover:before {
+      height: 100%;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(156, 111, 68, 0.15);
+    }
+    
+    .footer-link {
+      position: relative;
+    }
+    
+    .footer-link:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #9C6F44;
+      transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover:after {
+      width: 100%;
+    }
+    
+    .dark .footer-link:after {
+      background: #D4A017;
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+    
+    .newsletter-input {
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-input:focus {
+      box-shadow: 0 0 0 3px rgba(156, 111, 68, 0.3);
+    }
+    
+    .dark .newsletter-input:focus {
+      box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.3);
+    }
+    
+    .newsletter-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-btn:hover {
+      background-color: #B87333 !important;
+    }
+    
+    .dark .newsletter-btn:hover {
+      background-color: #CD7F32 !important;
+    }
+    
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(156, 111, 68, 0.3), transparent);
+    }
+    
+    .dark .footer-divider {
+      background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.3), transparent);
+    }
+    
+    .floating-arrow {
+      animation: bounceSlow 2s infinite;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-arrow:hover {
+      transform: translateY(5px);
+      animation: none;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(30,30,30,0.9) 0%, rgba(156,111,68,0.6) 100%);
+    }
+    
+    .dark .hero-gradient {
+      background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(156,111,68,0.6) 100%);
+    }
+    
+    .menu-section {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0 0h100v100H0V0zm10 10h80v80H10V10zm10 10h60v60H20V20zm10 10h40v40H30V30zm10 10h20v20H40V40z" fill="%239C6F44" fill-opacity="0.03" fill-rule="evenodd"/></svg>');
+    }
+    
+    .testimonial-section {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="none" stroke="%239C6F44" stroke-width="1" opacity="0.05"/></svg>');
+    }
+  </style>
+</head>
+
+<body class="bg-secondary text-dark font-sans antialiased transition-colors duration-300 dark:bg-dark dark:text-light">
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 w-full bg-white/95 py-3 z-50 backdrop-blur-md border-b border-gray-100 dark:bg-dark/95 dark:border-gray-800 nav-container" id="mainNav">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center gap-4">
+        <!-- Logo with better sizing and spacing -->
+        <img src="FalafelHuset_LogoDark.svg" alt="Falafelhuset" class="h-20 md:h-20 w-auto floating-logo">
+        
+        <!-- Dark mode toggle -->
+        <div class="flex items-center gap-2">
+          <i class="fas fa-sun text-gray-500 dark:text-yellow-300 text-sm"></i>
+          <div class="dark-mode-toggle" id="darkModeToggle"></div>
+          <i class="fas fa-moon text-gray-400 dark:text-white text-sm"></i>
+        </div>
+      </div>
+      
+      <!-- Navigation links with adjusted spacing -->
+      <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-base mt-3 md:mt-0">
+        <a href="#meny" class="text-dark hover:text-primary dark:text-light dark:hover:text-gold font-medium transition duration-200 flex items-center gap-2 nav-link">
+          <span class="text-sm md:text-base">Meny</span>
+          <i class="fas fa-utensils text-primary/80 dark:text-gold/80 text-sm"></i>
+        </a>
+        <a href="#bestallning" class="text-dark hover:text-primary dark:text-light dark:hover:text-gold font-medium transition duration-200 flex items-center gap-2 nav-link">
+          <span class="text-sm md:text-base">Beställ</span>
+          <i class="fas fa-motorcycle text-primary/80 dark:text-gold/80 text-sm"></i>
+        </a>
+        <a href="#omoss" class="text-dark hover:text-primary dark:text-light dark:hover:text-gold font-medium transition duration-200 flex items-center gap-2 nav-link">
+          <span class="text-sm md:text-base">Om oss</span>
+          <i class="fas fa-store text-primary/80 dark:text-gold/80 text-sm"></i>
+        </a>
+        <a href="#oppettider" class="text-dark hover:text-primary dark:text-light dark:hover:text-gold font-medium transition duration-200 flex items-center gap-2 nav-link">
+          <span class="text-sm md:text-base">Öppettider</span>
+          <i class="far fa-clock text-primary/80 dark:text-gold/80 text-sm"></i>
+        </a>
+      </div>
+      
+      <!-- Phone button with better proportions -->
+      <div class="hidden md:block mt-3 md:mt-0">
+        <a href="tel:0709743514" class="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full font-bold transition duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 group dark:bg-gold dark:hover:bg-opacity-90 text-sm btn-hover">
+          <i class="fas fa-phone group-hover:animate-pulse"></i> 070-974 35 14
+        </a>
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+<div class="relative h-screen max-h-[90vh] overflow-hidden">
+  <div class="absolute inset-0 hero-gradient z-10"></div>
+  <img src="FalafelHuset_Hero.jpeg" 
+       alt="Falafel" class="w-full h-full object-cover object-center">
+  
+  <!-- Hero content with perfect vertical centering -->
+  <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
+    <!-- Logo container with responsive sizing -->
+    <div class="mb-6 md:mb-8 animate-float">
+      <img src="FalafelHuset_LogoWhite.svg" alt="Falafelhuset" class="h-24 md:h-48 lg:h-56 w-auto object-contain floating-logo">
+    </div>
+    
+    <!-- Headline with better hierarchy -->
+    <div class="space-y-4 md:space-y-6 max-w-4xl mx-auto">
+      <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-heading font-bold animate-fade-in leading-tight">
+        Falafelhuset
+      </h1>
+      
+      <h2 class="hero-subtitle text-white text-2xl md:text-4xl lg:text-5xl font-subheading font-medium mb-6 md:mb-8 animate-fade-in">
+        Campus Valla
+      </h2>
+      
+      <p class="text-xl md:text-2xl text-white/90 mb-6 md:mb-8 animate-fade-in font-subheading max-w-2xl mx-auto">
+        Autentisk falafel med hemlagade tillbehör vid Linköpings universitet
+      </p>
+      
+      <!-- CTA buttons with better spacing -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+        <a href="#bestallning" class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 md:px-10 rounded-full transition duration-200 flex items-center justify-center gap-2 shadow-lg group dark:bg-gold dark:hover:bg-opacity-90 text-base md:text-lg hero-cta">
+          Beställ nu <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#meny" class="bg-white hover:bg-gray-50 text-dark font-bold py-3 px-8 md:px-10 rounded-full transition duration-200 flex items-center justify-center gap-2 shadow-lg group dark:bg-gray-800 dark:text-light dark:hover:bg-gray-700 text-base md:text-lg hero-cta">
+          Upptäck menyn <i class="fas fa-utensils group-hover:rotate-12 transition-transform"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator with subtle animation -->
+  <div class="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+    <a href="#meny" class="text-white text-2xl floating-arrow hover:scale-110 transition-transform">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </div>
+</div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+
+    <!-- Featured Section -->
+    <section class="mb-20 bg-gradient-to-r from-primary/5 to-secondary/50 dark:from-dark/50 dark:to-dark/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm luxury-section">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6 gradient-text">Vår signaturrätt</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 font-subheading max-w-2xl">
+            Vår berömda falafelrulle är tillagad med hemlagade kryddblandningar och färska grönsaker. Varje tugga är en resa genom Mellanösterns rika smaker.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-leaf text-herb"></i>
+              </div>
+              <span class="font-medium">Vegetarisk</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-mortar-pestle text-spice"></i>
+              </div>
+              <span class="font-medium">Hemlagade kryddor</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-bread-slice text-primary dark:text-gold"></i>
+              </div>
+              <span class="font-medium">Färskt bröd</span>
+            </div>
+          </div>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden shadow-xl h-64 lg:h-80 gold-border">
+          <img src="Falafelrulle.jpeg" 
+               alt="Falafelrulle" class="w-full h-full object-cover dish-image">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white text-2xl font-heading font-bold">Falafelrulle</h3>
+              <p class="text-white/90 font-subheading"><span class="menu-price">69 kr</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meny Section -->
+    <section id="meny" class="mb-20 menu-section">
+      <div class="text-center mb-16 floral-decoration">
+        <span class="inline-block bg-primary/10 text-primary dark:bg-gold/20 dark:text-gold px-4 py-2 rounded-full text-sm font-semibold mb-4 tracking-widest">
+          VÅRT UTBUD
+        </span>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Vår meny</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg font-subheading">Varje rätt tillagad med kärlek och autentiska kryddor</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Falafel 1 -->
+        <div class="luxury-card animate-slide-up delay-100 feature-card">
+          <div class="vegetarian-badge">
+            <i class="fas fa-leaf"></i> Vegetarisk
+          </div>
+          <div class="relative h-64 overflow-hidden">
+            <img src="Falafelrulle2.jpeg" 
+                 alt="Falafelrulle" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="price-tag">
+              <span class="menu-price">69 kr</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-2xl font-heading font-bold">Falafelrulle</h3>
+              <div class="flex gap-1">
+                <i class="fas fa-star text-gold"></i>
+                <i class="fas fa-star text-gold"></i>
+                <i class="fas fa-star text-gold"></i>
+                <i class="fas fa-star text-gold"></i>
+                <i class="fas fa-star-half-alt text-gold"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 font-subheading">Färsk falafel i pitabröd med sallad, tomater, gurka och vår hemlagda vitlökssås</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-seedling text-herb"></i> Falafel
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-bread-slice text-primary dark:text-gold"></i> Pitabröd
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-mortar-pestle text-spice"></i> Vitlökssås
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Falafel 2 -->
+        <div class="luxury-card animate-slide-up delay-200 feature-card">
+          <div class="vegetarian-badge">
+            <i class="fas fa-leaf"></i> Vegetarisk
+          </div>
+          <div class="relative h-64 overflow-hidden">
+            <img src="Falafeltallrik.jpeg" 
+                 alt="Falafel tallrik" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="price-tag">
+              <span class="menu-price">95 kr</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-heading font-bold mb-2">Falafeltallrik</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 font-subheading">Falafel med ris, färsk sallad, hummus, tahinisås och pitabröd</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-seedling text-herb"></i> Falafel
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-utensils text-primary dark:text-gold"></i> Ris
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-mortar-pestle text-spice"></i> Hummus
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Falafel 3 -->
+        <div class="luxury-card animate-slide-up delay-300 feature-card">
+          <div class="relative h-64 overflow-hidden">
+            <img src="Shawarmarulle.jpeg" 
+                 alt="Shawarma" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="price-tag">
+              <span class="menu-price">75 kr</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-heading font-bold mb-2">Shawarmarulle</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 font-subheading">Marinerad kyckling eller lamm i pitabröd med sallad, tomater och vitlökssås</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-drumstick-bite text-spice"></i> Kyckling/Lamm
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-bread-slice text-primary dark:text-gold"></i> Pitabröd
+                </span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark dark:text-light rounded-full flex items-center gap-1">
+                  <i class="fas fa-mortar-pestle text-spice"></i> Vitlökssås
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#full-meny" class="inline-flex items-center text-primary font-semibold text-lg group dark:text-gold">
+          <span class="group-hover:underline">Visa hela menyn</span>
+          <i class="fas fa-chevron-down ml-2 transition-transform group-hover:translate-y-1"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="mb-20 bg-primary/5 dark:bg-dark/80 rounded-3xl p-8 md:p-12 backdrop-blur-sm testimonial-section">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 gradient-text">Vad våra gäster säger</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-subheading">Upplevelser från våra nöjda kunder</p>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="testimonial-card p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Emma" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold">Emma L.</h4>
+                <div class="flex gap-1 text-gold">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic font-subheading testimonial-quote">
+              "Bästa falafeln i Linköping! Färska ingredienser och underbara smaker. Jag kommer tillbaka varje vecka."
+            </p>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Anders" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold">Anders S.</h4>
+                <div class="flex gap-1 text-gold">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic font-subheading testimonial-quote">
+              "Som student är detta mitt favoritställe. Generösa portioner till ett bra pris. Shawarmarullen är fantastisk!"
+            </p>
+          </div>
+          
+          <div class="testimonial-card p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sara" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold">Sara K.</h4>
+                <div class="flex gap-1 text-gold">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 italic font-subheading testimonial-quote">
+              "Äkta mellanösternsmaker! Hemlagade såser och färskt bröd gör skillnaden. Rekommenderas varmt!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="mb-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 gradient-text">Följ oss på Instagram</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-subheading">Dela din upplevelse med #falafelhuset</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="instagram-feed">
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1604977048612-3a9a7b4a3b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1633945274413-a64c8c054d02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="instagram-item instagram-hover">
+          <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Falafel" class="w-full h-full object-cover">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="#" target="_blank" class="inline-flex items-center bg-gradient-to-r from-primary to-copper text-white font-bold py-3 px-8 rounded-full transition duration-200 shadow-lg hover:shadow-xl group">
+          <i class="fab fa-instagram mr-2"></i> Följ @falafelhuset
+        </a>
+      </div>
+    </section>
+
+    <!-- Öppettider Section -->
+    <section id="oppettider" class="mb-20 bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12 relative overflow-hidden arabesque-corner">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518983546435-91f8b87fe561?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
+      <div class="relative max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4">Öppettider</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-subheading">Välkomna till en smakupplevelse från Orienten</p>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm p-6 rounded-xl border border-gray-100 dark:border-gray-600">
+            <h3 class="text-xl font-heading font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-600 oriental-border">Veckoöppettider</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Måndag - Torsdag</span>
+                <span class="font-semibold text-lg">11:00 - 18:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Fredag</span>
+                <span class="font-semibold text-lg">11:00 - 18:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Lördag - Söndag</span>
+                <span class="font-semibold text-lg text-gray-400">Stängt</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm p-6 rounded-xl border border-gray-100 dark:border-gray-600">
+            <h3 class="text-xl font-heading font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-600 oriental-border">Specialdagar</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Långfredag</span>
+                <span class="font-semibold text-lg">11:00 - 18:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Påskafton</span>
+                <span class="font-semibold text-lg text-gray-400">Stängt</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-600">
+                <span class="font-medium text-lg">Påskdagen</span>
+                <span class="font-semibold text-lg text-gray-400">Stängt</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-primary/5 dark:bg-gold/10 border border-primary/10 dark:border-gold/20 rounded-xl p-6 text-center max-w-2xl mx-auto backdrop-blur-sm">
+          <p class="font-semibold text-primary dark:text-gold text-lg"><i class="fas fa-info-circle mr-2"></i> Sista beställning 30 minuter innan stängning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">Kontakta oss</h2>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-6 contact-card bg-white/90 dark:bg-gray-800/90 p-6 rounded-xl backdrop-blur-sm">
+              <div class="spice-icon feature-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">Besöksadress</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg font-subheading">Key-Huset<br>581 83 Linköping</p>
+                <a href="https://goo.gl/maps/example" target="_blank" class="inline-block mt-3 text-primary font-semibold group dark:text-gold">
+                  <span class="group-hover:underline">Visa på karta</span>
+                  <i class="fas fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6 contact-card bg-white/90 dark:bg-gray-800/90 p-6 rounded-xl backdrop-blur-sm">
+              <div class="spice-icon feature-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">Telefon</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg font-subheading">070-974 35 14</p>
+                <a href="tel:0709743514" class="inline-block mt-3 bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition shadow-md group dark:bg-gold dark:hover:bg-opacity-90">
+                  Ring oss nu <i class="fas fa-phone ml-2 group-hover:animate-pulse"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6 contact-card bg-white/90 dark:bg-gray-800/90 p-6 rounded-xl backdrop-blur-sm">
+              <div class="spice-icon feature-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">E-post</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg font-subheading">info@falafelhuset.se</p>
+                <a href="mailto:info@falafelhuset.se" class="inline-block mt-3 bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition shadow-md group dark:bg-gold dark:hover:bg-opacity-90">
+                  Skicka meddelande <i class="fas fa-paper-plane ml-2 group-hover:animate-spin-slow"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rounded-2xl overflow-hidden shadow-xl h-96 lg:h-[500px] border-4 border-white dark:border-gray-800">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2079.869403873527!2d15.6012223159287!3d58.41090038124695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46596bc8b3b8e6d5%3A0x3e8a0d7c8a7a7a7a!2sKey-Huset%2C%20581%2083%20Link%C3%B6ping!5e0!3m2!1ssv!2sse!4v1620000000000!5m2!1ssv!2sse" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  
+
+    <!-- Call to Action - Refined Version -->
+    <section id="bestallning" class="mb-20 bg-gradient-to-br from-primary to-copper rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><path d=\"M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10\" fill=\"none\" stroke=\"white\" stroke-width=\"1\" opacity=\"0.1\"/></svg>');"></div>
+        
+        <div class="relative max-w-5xl mx-auto text-center">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Hungrig redan nu?</h2>
+          <p class="text-xl text-white/90 max-w-2xl mx-auto font-subheading mb-8">Beställ din favoriträtt direkt eller besök oss på Key-Huset</p>
+          
+          <div class="oriental-divider mx-auto bg-white/50"></div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300">
+              <div class="flex flex-col items-center">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                  <i class="fas fa-phone-alt text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-heading font-bold mb-4">Ring oss</h3>
+                <p class="mb-6 text-white/90 font-subheading">Snabba beställningar och frågor</p>
+                <a href="tel:0709743514" class="primary-cta px-8 py-3 rounded-full font-semibold transition duration-300 flex items-center gap-2">
+                  <i class="fas fa-phone mr-1"></i> 070-974 35 14
+                </a>
+              </div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300">
+              <div class="flex flex-col items-center">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                  <i class="fas fa-map-marker-alt text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-heading font-bold mb-4">Besök oss</h3>
+                <p class="mb-6 text-white/90 font-subheading">Upplev den autentiska atmosfären</p>
+                <a href="https://goo.gl/maps/example" target="_blank" class="secondary-cta px-8 py-3 rounded-full font-semibold transition duration-300 flex items-center gap-2">
+                  <i class="fas fa-directions mr-1"></i> Key-Huset
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Om Oss Section - Refined Version -->
+    <section id="omoss" class="mb-20">
+      <div class="about-section p-8 md:p-12">
+        <div class="about-pattern"></div>
+        <div class="about-content">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <span class="inline-block bg-primary/10 text-primary dark:bg-gold/20 dark:text-gold px-4 py-2 rounded-full text-sm font-semibold mb-4 tracking-widest">
+                VÅR HISTORIA & FILOSOFI
+              </span>
+              <h2 class="text-3xl md:text-5xl font-heading font-bold mb-6">En passion för autentiska smaker</h2>
+              
+              <div class="oriental-divider"></div>
+              
+              <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 font-subheading leading-relaxed">
+                Falafelhuset föddes ur en passion för autentisk mellanösternsk matkultur. Vår grundare, med rötter i Levanten, började sin resa med en enkel stånd på Linköpings universitet och har sedan dess utvecklat verksamheten till en av stadens mest älskade falafelrestauranger.
+              </p>
+              
+              <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 font-subheading leading-relaxed">
+                Vi använder endast traditionella recept och färska, högkvalitativa råvaror. Varje falafel knådas för hand och våra såser tillverkas dagligen på plats. Vår filosofi är enkel - servera mat som smakar som den gör i de bästa falafelrestaurangerna i Beirut och Jerusalem.
+              </p>
+              
+              <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="flex items-start gap-4">
+                  <div class="bg-primary/10 dark:bg-gold/20 p-3 rounded-full">
+                    <i class="fas fa-seedling text-herb text-xl feature-icon"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Ekologiska råvaror</h4>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Lokala grönsaker när möjligt</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="bg-primary/10 dark:bg-gold/20 p-3 rounded-full">
+                    <i class="fas fa-heart text-spice text-xl feature-icon"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Tillagat med kärlek</h4>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Passion i varje tugga</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="bg-primary/10 dark:bg-gold/20 p-3 rounded-full">
+                    <i class="fas fa-award text-gold text-xl feature-icon"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Erfarenhet</h4>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">15+ år i branschen</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="bg-primary/10 dark:bg-gold/20 p-3 rounded-full">
+                    <i class="fas fa-users text-primary dark:text-gold text-xl feature-icon"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Familjeägt</h4>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Personlig touch</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap gap-4">
+                <a href="#bestallning" class="primary-cta px-6 py-3 rounded-full font-semibold transition duration-300 flex items-center gap-2">
+                  Beställ nu <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </a>
+                <a href="#kontakt" class="secondary-cta px-6 py-3 rounded-full font-semibold transition duration-300 flex items-center gap-2">
+                  Kontakta oss <i class="fas fa-chevron-right transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 relative rounded-3xl overflow-hidden shadow-xl h-96 lg:h-[500px] border-4 border-white dark:border-gray-800">
+              <img src="Falafelhuset_Team.jpeg" 
+                   alt="Falafelhuset team" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent flex items-end p-8">
+                <div>
+                  <p class="text-white text-lg font-medium font-subheading mb-2">Vårt passionerade team</p>
+                  <div class="flex gap-2">
+                    <span class="inline-block w-3 h-3 rounded-full bg-primary"></span>
+                    <span class="inline-block w-3 h-3 rounded-full bg-white/30"></span>
+                    <span class="inline-block w-3 h-3 rounded-full bg-white/30"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informationsrutor (EXTRA) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md text-center hover:shadow-lg transition duration-300 group feature-card">
+        <div class="w-16 h-16 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 dark:group-hover:bg-gold/30 transition">
+          <i class="fas fa-seedling text-2xl text-primary dark:text-gold group-hover:scale-110 transition-transform feature-icon"></i>
+        </div>
+        <h3 class="text-xl font-heading font-bold mb-2">Färska råvaror</h3>
+        <p class="text-gray-600 dark:text-gray-300 font-subheading">Endast de bästa grönsakerna och kryddorna i våra rätter</p>
+      </div>
+      
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md text-center hover:shadow-lg transition duration-300 group feature-card">
+        <div class="w-16 h-16 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 dark:group-hover:bg-gold/30 transition">
+          <i class="fas fa-mortar-pestle text-2xl text-primary dark:text-gold group-hover:scale-110 transition-transform feature-icon"></i>
+        </div>
+        <h3 class="text-xl font-heading font-bold mb-2">Hemlagat</h3>
+        <p class="text-gray-600 dark:text-gray-300 font-subheading">Alla våra såser och tillbehör görs för hand varje dag</p>
+      </div>
+      
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md text-center hover:shadow-lg transition duration-300 group feature-card">
+        <div class="w-16 h-16 bg-primary/10 dark:bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 dark:group-hover:bg-gold/30 transition">
+          <i class="fas fa-leaf text-2xl text-primary dark:text-gold group-hover:scale-110 transition-transform feature-icon"></i>
+        </div>
+        <h3 class="text-xl font-heading font-bold mb-2">Vegetariskt</h3>
+        <p class="text-gray-600 dark:text-gray-300 font-subheading">100% vegetarisk mat med fullständiga näringsämnen</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <span class="text-2xl font-heading font-bold text-white mb-6 flex items-center gap-2">
+            <i class="fas fa-leaf text-herb"></i> Falafelhuset
+          </span>
+          <p class="text-gray-400 text-lg font-subheading">Autentisk falafel i hjärtat av Linköpings universitet.</p>
+          <div class="mt-6">
+            <h4 class="font-bold mb-3">Nyhetsbrev</h4>
+            <div class="flex">
+              <input type="email" placeholder="Din e-post" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark newsletter-input">
+              <button class="bg-primary hover:bg-opacity-90 px-4 py-2 rounded-r-lg dark:bg-gold dark:hover:bg-opacity-90 newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Navigation</h3>
+          <ul class="space-y-3">
+            <li><a href="#meny" class="text-gray-400 hover:text-white transition text-lg group font-subheading footer-link">Meny <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i></a></li>
+            <li><a href="#bestallning" class="text-gray-400 hover:text-white transition text-lg group font-subheading footer-link">Beställning <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i></a></li>
+            <li><a href="#omoss" class="text-gray-400 hover:text-white transition text-lg group font-subheading footer-link">Om oss <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i></a></li>
+            <li><a href="#oppettider" class="text-gray-400 hover:text-white transition text-lg group font-subheading footer-link">Öppettider <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i></a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Kontakt</h3>
+          <ul class="space-y-3 text-gray-400 text-lg font-subheading">
+            <li class="flex items-center gap-3 hover:text-white transition footer-link">
+              <i class="fas fa-map-marker-alt text-primary"></i> Key-Huset
+            </li>
+            <li class="flex items-center gap-3 hover:text-white transition footer-link">
+              <i class="fas fa-phone-alt text-primary"></i> 070-974 35 14
+            </li>
+            <li class="flex items-center gap-3 hover:text-white transition footer-link">
+              <i class="fas fa-envelope text-primary"></i> info@falafelhuset.se
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Följ oss</h3>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110 social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110 social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110 social-icon">
+              <i class="fab fa-tripadvisor"></i>
+            </a>
+          </div>
+          <div class="mt-6">
+            <h4 class="font-bold mb-3">Betalningsmetoder</h4>
+            <div class="flex gap-3">
+              <i class="fab fa-cc-visa text-2xl text-gray-400"></i>
+              <i class="fab fa-cc-mastercard text-2xl text-gray-400"></i>
+              <i class="fab fa-cc-apple-pay text-2xl text-gray-400"></i>
+              <i class="fab fa-cc-paypal text-2xl text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-500 font-subheading">
+        <div class="footer-divider mb-8"></div>
+        <p>&copy; <span id="current-year">2025</span> Falafelhuset. Alla rättigheter förbehållna.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Button -->
+  <a href="tel:0709743514" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-xl hover:bg-opacity-90 transition z-50 animate-pulse-slow group floating-action-btn dark:bg-gold dark:hover:bg-opacity-90">
+    <i class="fas fa-phone-alt text-2xl group-hover:animate-ping"></i>
+  </a>
+
+  <script>
+    // Dynamic opening hours
+    const oppettider = {
+      0: "Stängt", // Söndag
+      1: "11:00 – 18:00", // Måndag
+      2: "11:00 – 18:00",
+      3: "11:00 – 18:00",
+      4: "11:00 – 18:00",
+      5: "11:00 – 18:00",
+      6: "Stängt"  // Lördag
+    };
+    
+    const idag = new Date().getDay();
+    const oppetIdagElement = document.getElementById("oppet-idag");
+    if (oppetIdagElement) {
+      oppetIdagElement.textContent = oppettider[idag];
+    }
+    
+    // Current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+    
+    // Scroll indicator
+    window.addEventListener('scroll', () => {
+      const scrollIndicator = document.getElementById('scrollIndicator');
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      scrollIndicator.style.width = `${scrollPercentage}%`;
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.animate-slide-up');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+
+</body>
+</html>
