@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizzeria Victoria | Autentisk italiensk pizza i Linköping</title>
+  <meta name="description" content="Pizzeria Victoria serverar Linköpings bästa italienska pizzor sedan 1995. Besök oss på Västra Vägen 3 eller beställ för avhämtning.">
+  
+  <!-- External Resources -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#990011', // Rich cherry red
+            secondary: '#F8F5F2', // Warm off-white
+            accent: '#D4A59A', // Muted salmon
+            dark: '#2A2A2A', // Deep charcoal
+            light: '#FFF9F5', // Creamy off-white
+            gold: '#D4A017' // Warm golden accent
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"DM Serif Display"', 'serif'],
+            subheading: ['"Playfair Display"', 'serif'],
+            decorative: ['"Playfair Display"', 'serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-in',
+            'spin-slow': 'spin 8s linear infinite',
+            'bounce-slow': 'bounceSlow 2s infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Utility Classes */
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .animation-delay-100 { animation-delay: 0.1s; }
+    .animation-delay-200 { animation-delay: 0.2s; }
+    .animation-delay-300 { animation-delay: 0.3s; }
+    .animation-delay-400 { animation-delay: 0.4s; }
+    
+    .animate-slide-up {
+      animation: slide-up 0.8s ease-out forwards;
+    }
+
+    .menu-item {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(42,42,42,0.8) 0%, rgba(153,0,17,0.6) 100%);
+    }
+    
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #990011 0%, #D4A017 100%);
+      margin: 2rem auto;
+    }
+    
+    .pizza-shadow {
+      box-shadow: 0 15px 30px -10px rgba(153, 0, 17, 0.3);
+    }
+    
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23990011' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .ingredient-dots {
+      background-image: radial-gradient(#990011 2px, transparent 2px);
+      background-size: 16px 16px;
+    }
+    
+    .floating-label {
+      transform: translateY(-50%);
+      left: 20px;
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #9C6F44, #D4A017, #C1121F);
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border-radius: 0 2px 2px 0;
+    }
+    
+    input:focus + label, 
+    textarea:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label {
+      transform: translateY(-150%) scale(0.9);
+      background: white;
+      padding: 0 5px;
+    }
+
+    /* Video Playing Effects */
+    /* Video Playing Effects
+    .video-playing {
+      --primary: #ff0000; /* Change to red when video plays */
+      --secondary: #f0f0f0; /* Lighter background */   /*
+      filter: saturate(1.2);
+      transition: all 0.5s ease;
+    }
+    */
+
+    .video-playing .bg-primary {
+      background-color: var(--primary) !important;
+    }
+
+    .video-playing .text-primary {
+      color: var(--primary) !important;
+    }
+
+    .video-container {
+      transition: all 0.5s ease;
+    }
+
+    .video-playing .video-container {
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-light text-dark font-sans antialiased">
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 w-full bg-white/80 shadow-sm py-4 z-50 backdrop-blur-lg border-b border-gray-100">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <img src="PizzeriaVictoriaVec.svg" alt="Pizzeria Victoria" class="h-12 md:h-16 transition duration-300 hover:scale-105">
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-base">
+        <a href="menu.html" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Meny</span>
+          <i class="fas fa-pizza-slice text-primary/80 transition-transform group-hover:rotate-45"></i>
+        </a>
+        <a href="#bestallning" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Beställ</span>
+          <i class="fas fa-motorcycle text-primary/80 transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="#omoss" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Om oss</span>
+          <i class="fas fa-store text-primary/80 transition-transform group-hover:scale-110"></i>
+        </a>
+        <a href="#oppettider" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Öppettider</span>
+          <i class="far fa-clock text-primary/80 transition-transform group-hover:rotate-45"></i>
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <a href="tel:013130204" class="bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-full font-bold transition duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 group">
+          <i class="fas fa-phone group-hover:animate-pulse"></i> 013-13 02 04
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-screen max-h-[90vh] overflow-hidden bg-dark">
+    <!-- Hero image with rich red overlay -->
+    <div class="absolute inset-0 z-10">
+      <img src="pizzeria_bild.jpeg" alt="Pizzeria Victoria" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-primary/45 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/50 via-dark/70 to-dark/90"></div>
+    </div>
+
+    <!-- Decorative pizza elements floating in background -->
+    <div class="absolute inset-0 z-0 overflow-hidden opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-white/30 animate-float animation-delay-100"></div>
+      <div class="absolute top-1/3 right-1/5 w-12 h-12 rounded-full bg-white/20 animate-float animation-delay-300"></div>
+      <div class="absolute bottom-1/4 left-1/5 w-10 h-10 rounded-full bg-white/25 animate-float animation-delay-500"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
+      <!-- Logo with subtle glow -->
+      <div class="mb-16 animate-float">
+        <img src="PizzeriaVictoriaVecHero.svg" alt="Pizzeria Victoria" 
+             class="h-24 md:h-32 mx-auto transition-transform duration-500 hover:animate-spin-slow">
+      </div>
+
+      <!-- Main heading -->
+      <div class="overflow-hidden">
+        <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-2 animate-slide-up leading-tight tracking-tight">
+          <span class="inline-block transform transition duration-700 hover:scale-105">Pizzeria</span>
+          <span class="inline-block transform transition duration-700 hover:scale-105 text-white">Victoria</span>
+        </h1>
+      </div>
+
+      <!-- Subheading -->
+      <div class="overflow-hidden">
+        <h2 class="hero-subtitle text-white text-3xl md:text-5xl font-subheading font-medium mb-4 md:mb-6 animate-slide-up animation-delay-100">
+          <span class="relative inline-block px-6">
+            <span class="absolute left-0 top-1/2 w-4 h-px bg-white/50 transform -translate-y-1/2"></span>
+            Gottfridsberg
+            <span class="absolute right-0 top-1/2 w-4 h-px bg-white/50 transform -translate-y-1/2"></span>
+          </span>
+        </h2>
+      </div>
+
+      <!-- Description text -->
+      <div class="overflow-hidden max-w-2xl mx-auto">
+        <p class="text-xl md:text-2xl text-white/90 mb-8 md:mb-12 animate-slide-up animation-delay-200 font-subheading leading-relaxed text-shadow">
+          Autentisk italiensk pizza i hjärtat av Linköping sedan 1995
+        </p>
+      </div>
+      
+      <!-- Call-to-action buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center animate-fade-in animation-delay-300">
+        <a href="#bestallning" class="relative overflow-hidden bg-white text-dark hover:text-white font-bold py-4 px-8 md:px-10 rounded-full transition duration-300 flex items-center justify-center gap-2 shadow-lg group text-lg md:text-xl">
+          <span class="relative z-10">Beställ nu</span>
+          <i class="fas fa-arrow-right relative z-10 transition-transform group-hover:translate-x-1"></i>
+          <span class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
+        <a href="#meny" class="relative overflow-hidden bg-transparent border-2 border-white text-white hover:border-primary font-bold py-4 px-8 md:px-10 rounded-full transition duration-300 flex items-center justify-center gap-2 shadow-lg group text-lg md:text-xl">
+          <span class="relative z-10">Upptäck menyn</span>
+          <i class="fas fa-utensils relative z-10 transition-transform group-hover:rotate-12"></i>
+          <span class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-0 right-0 flex justify-center z-20 animate-bounce-slow">
+      <a href="#meny" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-primary/80 transition duration-300 transform hover:scale-110">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+
+    <!-- Decorative corner elements -->
+    <div class="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-white/50 animate-fade-in animation-delay-400"></div>
+    <div class="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-white/50 animate-fade-in animation-delay-400"></div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+
+    <!-- Menu Section -->
+    <section id="meny" class="mb-20">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 tracking-widest">
+          VÅRT UTBUD
+        </span>
+        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4">Vår meny</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Varje pizza skapad med kärlek och de bästa råvarorna</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Pizza 1 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden pizza-shadow hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                 alt="Margherita" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="absolute top-4 right-4 bg-primary text-white text-lg font-bold px-4 py-1 rounded-full shadow-md">
+              120 kr
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-2xl font-heading font-bold">Margherita</h3>
+              <span class="inline-flex items-center text-sm text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                <i class="fas fa-leaf mr-1"></i> Vegetarisk
+              </span>
+            </div>
+            <p class="text-gray-600 mb-4">Klassisk tomatsås, färsk mozzarella och basilika</p>
+            <div class="flex items-center text-sm text-primary">
+              <i class="fas fa-star mr-2"></i> Bästsäljare
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Tomatsås</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Mozzarella</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Basilika</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pizza 2 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden pizza-shadow hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                 alt="Vesuvio" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="absolute top-4 right-4 bg-primary text-white text-lg font-bold px-4 py-1 rounded-full shadow-md">
+              120 kr
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-heading font-bold mb-2">Vesuvio</h3>
+            <p class="text-gray-600 mb-4">Tomatsås, mozzarella och skinka av högsta kvalitet</p>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Tomatsås</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Mozzarella</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Skinka</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pizza 3 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg overflow-hidden pizza-shadow hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                 alt="Capricciosa" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+            <div class="absolute top-4 right-4 bg-primary text-white text-lg font-bold px-4 py-1 rounded-full shadow-md">
+              120 kr
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-heading font-bold mb-2">Capricciosa</h3>
+            <p class="text-gray-600 mb-4">Tomatsås, mozzarella, skinka och färska champinjoner</p>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Tomatsås</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Mozzarella</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Skinka</span>
+                <span class="text-xs px-2 py-1 bg-accent/20 text-dark rounded-full">Champinjoner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="menu.html" class="inline-flex items-center text-primary font-semibold text-lg group">
+          <span class="group-hover:underline">Visa hela menyn</span>
+          <i class="fas fa-chevron-down ml-2 transition-transform group-hover:translate-y-1"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section id="oppettider" class="mb-20 bg-white rounded-2xl shadow-md p-8 md:p-12 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518983546435-91f8b87fe561?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
+      <div class="relative max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4">Öppettider</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Välkomna till en kulinarisk upplevelse</p>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-gray-100">
+            <h3 class="text-xl font-heading font-bold mb-6 pb-2 border-b border-gray-200">Veckoöppettider</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Måndag - Fredag</span>
+                <span class="font-semibold text-lg">11:00 - 21:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Lördag</span>
+                <span class="font-semibold text-lg">12:00 - 22:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Söndag</span>
+                <span class="font-semibold text-lg">12:00 - 22:00</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-gray-100">
+            <h3 class="text-xl font-heading font-bold mb-6 pb-2 border-b border-gray-200">Specialdagar</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Julafton</span>
+                <span class="font-semibold text-lg text-gray-400">Stängt</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Nyårsafton</span>
+                <span class="font-semibold text-lg">12:00 - 18:00</span>
+              </li>
+              <li class="flex justify-between items-center pb-4 border-b border-gray-100">
+                <span class="font-medium text-lg">Midsommar</span>
+                <span class="font-semibold text-lg text-gray-400">Stängt</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-primary/5 border border-primary/10 rounded-xl p-6 text-center max-w-2xl mx-auto backdrop-blur-sm">
+          <p class="font-semibold text-primary text-lg"><i class="fas fa-info-circle mr-2"></i> Köket stänger 30 minuter innan sista beställning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">Kontakta oss</h2>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mt-1 text-primary">
+                <i class="fas fa-map-marker-alt text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">Besöksadress</h3>
+                <p class="text-gray-600 text-lg">Västra Vägen 3<br>582 34 Linköping</p>
+                <a href="https://maps.google.com" target="_blank" class="inline-block mt-3 text-primary font-semibold group">
+                  <span class="group-hover:underline">Visa på karta</span>
+                  <i class="fas fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mt-1 text-primary">
+                <i class="fas fa-phone-alt text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">Telefon</h3>
+                <p class="text-gray-600 text-lg">013-13 02 04</p>
+                <a href="tel:013130204" class="inline-block mt-3 bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition shadow-md group">
+                  Ring oss nu <i class="fas fa-phone ml-2 group-hover:animate-pulse"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mt-1 text-primary">
+                <i class="fas fa-envelope text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2">E-post</h3>
+                <p class="text-gray-600 text-lg">info@victoriapizza.se</p>
+                <a href="mailto:info@victoriapizza.se" class="inline-block mt-3 bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition shadow-md">
+                  Skicka meddelande <i class="fas fa-paper-plane ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rounded-2xl overflow-hidden shadow-xl h-96 lg:h-[500px] border-4 border-white">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2079.869403873527!2d15.6012223159287!3d58.41090038124695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46596bc8b3b8e6d5%3A0x3e8a0d7c8a7a7a7a!2sV%C3%A4stra%20V%C3%A4gen%203%2C%20582%2034%20Link%C3%B6ping!5e0!3m2!1ssv!2sse!4v1620000000000!5m2!1ssv!2sse" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="bestallning" class="mb-20 bg-gradient-to-br from-primary to-dark rounded-2xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+      <div class="absolute inset-0 ingredient-dots opacity-10"></div>
+      <div class="relative max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Beställ din pizza</h2>
+          <p class="text-xl text-white/90 max-w-2xl mx-auto">Hemskräddad smak som kommer direkt till dig</p>
+          <div class="section-divider bg-white mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-phone-alt text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-heading font-bold">Telefonbeställning</h3>
+            </div>
+            <p class="mb-6 text-white/90">Ring oss direkt för snabb beställning och avhämtning</p>
+            <a href="tel:013130204" class="inline-flex items-center justify-center bg-white text-primary font-bold py-4 px-8 rounded-full hover:bg-gray-50 transition duration-200 shadow-lg hover:scale-105 group">
+              <i class="fas fa-phone mr-2 group-hover:animate-pulse"></i> 013-13 02 04
+            </a>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-heading font-bold">Besök oss</h3>
+            </div>
+            <p class="mb-6 text-white/90">Upplev den autentiska italienska atmosfären i vår restaurang</p>
+            <a href="https://maps.google.com" target="_blank" class="inline-flex items-center justify-center bg-white text-primary font-bold py-4 px-8 rounded-full hover:bg-gray-50 transition duration-200 shadow-lg hover:scale-105 group">
+              <i class="fas fa-directions mr-2 group-hover:rotate-45 transition-transform"></i> Västra Vägen 3
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section - Enhanced -->
+    <section id="omoss" class="mb-32 relative overflow-hidden">
+      <!-- Decorative background elements -->
+      <div class="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-primary/10 blur-3xl z-0"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-accent/10 blur-3xl z-0"></div>
+      
+      <div class="relative z-10">
+        <!-- Section header with animated divider -->
+        <div class="text-center mb-20">
+          <span class="inline-block bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-6 tracking-widest uppercase">
+            Vår Passion
+          </span>
+          <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6">
+            <span class="text-primary">Tradition</span> & <span class="text-dark">Innovation</span>
+          </h2>
+          <div class="flex justify-center">
+            <div class="section-divider animate-pulse-slow"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <!-- Video container with elegant frame -->
+          <div class="order-1 lg:order-2 relative group">
+            <div class="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl transform group-hover:scale-105 transition duration-500"></div>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl h-70 lg:h-[500px] border-8 border-white transform rotate-1 group-hover:rotate-0 transition duration-500">
+              <iframe id="youtube-video" 
+                      width="100%" 
+                      height="100%" 
+                      src="https://www.youtube.com/embed/frocQGzc53I?enablejsapi=1&autoplay=0&mute=1&rel=0&start=1084"
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen
+                      class="absolute inset-0 w-full h-full object-cover">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Content with elegant typography -->
+          <div class="order-2 lg:order-1">
+            <div class="bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-lg border border-white/20">
+              <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-dark">
+                En <span class="text-primary">kulinarisk</span> resa sedan 1995
+              </h3>
+              
+              <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                Pizzeria Victoria föddes ur en passion för autentisk italiensk matlagning och en dröm om att skapa Linköpings bästa pizzaupplevelse. Varje degknytningsceremoni, varje tomatsås som simmar i timmar, och varje perfekt gräddad pizza bär på vår familjs stolthet och hantverksskicklighet.
+              </p>
+              
+              <!-- Elegant stats grid -->
+              <div class="grid grid-cols-2 gap-6 mb-10">
+                <div class="text-center p-4 bg-primary/5 rounded-xl">
+                  <div class="text-4xl font-bold text-primary mb-2 font-heading">28+</div>
+                  <div class="text-sm uppercase tracking-widest text-gray-600">År i branschen</div>
+                </div>
+                <div class="text-center p-4 bg-primary/5 rounded-xl">
+                  <div class="text-4xl font-bold text-primary mb-2 font-heading">500K+</div>
+                  <div class="text-sm uppercase tracking-widest text-gray-600">Nöjda gäster</div>
+                </div>
+                <div class="text-center p-4 bg-primary/5 rounded-xl">
+                  <div class="text-4xl font-bold text-primary mb-2 font-heading">100%</div>
+                  <div class="text-sm uppercase tracking-widest text-gray-600">Hantverk</div>
+                </div>
+                <div class="text-center p-4 bg-primary/5 rounded-xl">
+                  <div class="text-4xl font-bold text-primary mb-2 font-heading">3</div>
+                  <div class="text-sm uppercase tracking-widest text-gray-600">Generationer</div>
+                </div>
+              </div>
+              
+              <!-- Signature element -->
+              <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
+                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark">Familjen Andersson</h4>
+                  <p class="text-sm text-gray-500">Grundare & pizzamästare</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elegant Info Boxes Section -->
+    <section class="mb-20">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 tracking-widest">
+          VÅRA VÄRDEN
+        </span>
+        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4">Det som gör oss unika</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Box 1 - Classic Elegant Design -->
+        <div class="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-xl border border-gray-100">
+          <div class="absolute inset-0 bg-gradient-to-b from-white to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative p-8 z-10 h-full flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              <i class="fas fa-fire text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-heading font-bold mb-4 text-dark">Stenugnsbakad</h3>
+            <p class="text-gray-600 mb-6">Alla våra pizzor bakas i traditionell stenugn för autentisk smak och perfekt knaprig botten</p>
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary/0 group-hover:bg-primary transition-all duration-500"></div>
+          </div>
+        </div>
+        
+        <!-- Box 2 - With subtle floating effect -->
+        <div class="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-xl border border-gray-100 hover:-translate-y-1">
+          <div class="absolute inset-0 bg-gradient-to-b from-white to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative p-8 z-10 h-full flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              <i class="fas fa-leaf text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-heading font-bold mb-4 text-dark">Färska råvaror</h3>
+            <p class="text-gray-600 mb-6">Endast de bästa ingredienserna från lokala leverantörer och italienska specialiteter importerade direkt</p>
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary/0 group-hover:bg-primary transition-all duration-500"></div>
+          </div>
+        </div>
+        
+        <!-- Box 3 - With elegant pulse effect -->
+        <div class="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-xl border border-gray-100">
+          <div class="absolute inset-0 bg-gradient-to-b from-white to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative p-8 z-10 h-full flex flex-col items-center text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white group-hover:animate-pulse-slow transition-all duration-500">
+              <i class="fas fa-heart text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-heading font-bold mb-4 text-dark">Familjeägd</h3>
+            <p class="text-gray-600 mb-6">Passion för mat sedan 1995 - en smak av Italien i Linköping. Tre generationers kunskap i varje tugga</p>
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary/0 group-hover:bg-primary transition-all duration-500"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer - Modernized -->
+  <footer class="bg-gradient-to-b from-dark to-black text-white pt-20 pb-12 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl z-0"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-accent/10 blur-3xl z-0"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+        <!-- Brand column with animated logo -->
+        <div class="group">
+          <div class="mb-8 transform transition duration-500 group-hover:-rotate-3">
+            <img src="PizzeriaVictoriaVecWhite.png" alt="Pizzeria Victoria" class="h-20 mx-auto lg:mx-0">
+          </div>
+          <p class="text-gray-400 text-lg mb-6">Autentisk italiensk pizza i hjärtat av Linköping sedan 1995.</p>
+          <div class="flex justify-center lg:justify-start gap-4">
+            <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <i class="fab fa-tripadvisor"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Navigation column with hover effects -->
+        <div>
+          <h3 class="text-2xl font-heading font-bold mb-8 pb-2 relative inline-block">
+            Navigation
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent"></span>
+          </h3>
+          <ul class="space-y-4">
+            <li>
+              <a href="#meny" class="text-gray-400 hover:text-white transition-all duration-300 text-lg group flex items-center">
+                <span class="w-2 h-2 bg-primary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                Meny
+                <i class="fas fa-chevron-right ml-2 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#bestallning" class="text-gray-400 hover:text-white transition-all duration-300 text-lg group flex items-center">
+                <span class="w-2 h-2 bg-primary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                Beställning
+                <i class="fas fa-chevron-right ml-2 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#omoss" class="text-gray-400 hover:text-white transition-all duration-300 text-lg group flex items-center">
+                <span class="w-2 h-2 bg-primary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                Om oss
+                <i class="fas fa-chevron-right ml-2 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#oppettider" class="text-gray-400 hover:text-white transition-all duration-300 text-lg group flex items-center">
+                <span class="w-2 h-2 bg-primary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                Öppettider
+                <i class="fas fa-chevron-right ml-2 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Contact column with interactive elements -->
+        <div>
+          <h3 class="text-2xl font-heading font-bold mb-8 pb-2 relative inline-block">
+            Kontakt
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent to-primary"></span>
+          </h3>
+          <ul class="space-y-5">
+            <li>
+              <a href="https://maps.google.com" class="flex items-start gap-4 group">
+                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mt-1 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white group-hover:text-primary transition-colors duration-300">Besöksadress</h4>
+                  <p class="text-gray-400 text-lg">Västra Vägen 3<br>582 34 Linköping</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="tel:013130204" class="flex items-start gap-4 group">
+                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mt-1 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white group-hover:text-primary transition-colors duration-300">Telefon</h4>
+                  <p class="text-gray-400 text-lg">013-13 02 04</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@victoriapizza.se" class="flex items-start gap-4 group">
+                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mt-1 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white group-hover:text-primary transition-colors duration-300">E-post</h4>
+                  <p class="text-gray-400 text-lg">info@victoriapizza.se</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Newsletter column with modern form -->
+        <div>
+          <h3 class="text-2xl font-heading font-bold mb-8 pb-2 relative inline-block">
+            Nyhetsbrev
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent"></span>
+          </h3>
+          <p class="text-gray-400 text-lg mb-6">Prenumerera för erbjudanden och nyheter</p>
+          
+          <form class="space-y-4">
+            <div class="relative">
+              <input type="email" placeholder="Din e-post" class="w-full px-5 py-4 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-500 transition-all duration-300">
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold py-4 px-6 rounded-lg transition-all duration-500 hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2">
+              <span>Prenumerera</span>
+              <i class="fas fa-paper-plane transition-transform duration-300 group-hover:translate-x-1"></i>
+            </button>
+          </form>
+          
+          <div class="mt-8">
+            <h4 class="font-semibold text-white mb-4">Betalningsmetoder</h4>
+            <div class="flex flex-wrap gap-3">
+              <div class="w-12 h-8 bg-gray-800 rounded flex items-center justify-center">
+                <i class="fab fa-cc-visa text-gray-300"></i>
+              </div>
+              <div class="w-12 h-8 bg-gray-800 rounded flex items-center justify-center">
+                <i class="fab fa-cc-mastercard text-gray-300"></i>
+              </div>
+              <div class="w-12 h-8 bg-gray-800 rounded flex items-center justify-center">
+                <i class="fab fa-cc-amex text-gray-300"></i>
+              </div>
+              <div class="w-12 h-8 bg-gray-800 rounded flex items-center justify-center">
+                <i class="fas fa-money-bill-wave text-gray-300"></i>
+              </div>
+              <div class="w-12 h-8 bg-gray-800 rounded flex items-center justify-center">
+                <i class="fab fa-cc-apple-pay text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer bottom with elegant divider -->
+      <div class="pt-8 border-t border-gray-800">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 text-center md:text-left mb-4 md:mb-0">
+            &copy; <span id="current-year">2025</span> Pizzeria Victoria. Alla rättigheter förbehållna.
+          </p>
+          <div class="flex gap-6">
+            <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300">Integritetspolicy</a>
+            <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300">Användarvillkor</a>
+            <a href="#" class="text-gray-500 hover:text-white transition-colors duration-300">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Button -->
+  <a href="tel:013130204" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-xl hover:bg-opacity-90 transition z-50 animate-pulse-slow group">
+    <i class="fas fa-phone-alt text-2xl group-hover:animate-ping"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    // Dynamic opening hours
+    const oppettider = {
+      0: "12:00 – 22:00", // Söndag
+      1: "11:00 – 21:00", // Måndag
+      2: "11:00 – 21:00",
+      3: "11:00 – 21:00",
+      4: "11:00 – 21:00",
+      5: "11:00 – 21:00",
+      6: "12:00 – 22:00"  // Lördag
+    };
+    
+    const idag = new Date().getDay();
+    const oppetIdagElement = document.getElementById("oppet-idag");
+    if (oppetIdagElement) {
+      oppetIdagElement.textContent = oppettider[idag];
+    }
+    
+    // Current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Scroll indicator functionality
+    window.addEventListener('scroll', function() {
+      const scrollIndicator = document.getElementById('scrollIndicator');
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Calculate scroll percentage
+      const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+      
+      // Update the width of the scroll indicator
+      scrollIndicator.style.width = scrollPercentage + '%';
+    });
+
+    // Initialize scroll indicator to 0 on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('scrollIndicator').style.width = '0%';
+    });
+
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.animate-slide-up');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+
+    // YouTube API setup
+    let player;
+    let isVideoPlaying = false;
+    
+    // This function loads the YouTube API
+    function loadYouTubeAPI() {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+    
+    // This function is called by YouTube API when ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-video', {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    
+    // Handle video state changes
+    function onPlayerStateChange(event) {
+      const body = document.body;
+      
+      if (event.data === YT.PlayerState.PLAYING) {
+        isVideoPlaying = true;
+        body.classList.add('video-playing');
+      } else {
+        isVideoPlaying = false;
+        body.classList.remove('video-playing');
+      }
+    }
+    
+    // Load the YouTube API when page loads
+    document.addEventListener('DOMContentLoaded', loadYouTubeAPI);
+  </script>
+</body>
+</html>

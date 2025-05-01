@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizzeria Victoria | Vår fullständiga meny</title>
+  <meta name="description" content="Utforska vår fullständiga meny med autentiska italienska pizzor, pasta, sallader och mer. Pizzeria Victoria i Linköping sedan 1995.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#990011',
+            secondary: '#E8C4C4',
+            light: '#FFF9F5',
+            dark: '#2A2A2A',
+            accent: '#D4A59A',
+            success: '#4CAF50',
+            gold: '#D4A017'
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            heading: ['"Playfair Display"', 'serif'],
+            italian: ['"Italianno"', 'cursive'],
+            subheading: ['"Playfair Display"', 'serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.5s ease-in',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&family=Italianno&display=swap');
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Enhanced glass effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark mode enhancements */
+    body.dark {
+      background-color: #1E1E1E;
+      color: #F5F5F5;
+    }
+
+    body.dark .menu-item {
+      background-color: rgba(42, 42, 42, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Active nav item with gradient */
+    .menu-nav-item.active {
+      font-weight: bold;
+      background: linear-gradient(90deg, rgba(153,0,17,0.1) 0%, rgba(212,165,154,0.1) 100%);
+      border-radius: 9999px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    /* Enhanced ingredient chips */
+    .ingredient-chip {
+      display: inline-block;
+      background: rgba(233, 196, 196, 0.3);
+      border-radius: 16px;
+      padding: 4px 12px;
+      margin: 4px 4px 4px 0;
+      font-size: 0.8rem;
+      color: #2A2A2A;
+      transition: all 0.3s ease;
+    }
+    
+    .ingredient-chip:hover {
+      background: rgba(153, 0, 17, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Menu item hover effects */
+    .menu-item {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 2px solid transparent;
+    }
+    
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px -8px rgba(153, 0, 17, 0.2);
+      border-color: rgba(153, 0, 17, 0.2);
+    }
+    
+    /* Hero overlay gradient */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(42,42,42,0.9) 0%, rgba(153,0,17,0.7) 100%);
+    }
+    
+    /* Elegant section dividers */
+    .section-divider {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, #990011 0%, #D4A017 100%);
+      margin: 2rem auto;
+      border-radius: 2px;
+    }
+    
+    /* Subtle pattern background */
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23990011' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    /* Category anchor offset */
+    .menu-category {
+      scroll-margin-top: 140px;
+    }
+    
+    /* Price tag styling */
+    .price-tag {
+      background: linear-gradient(135deg, #990011 0%, #cc0015 100%);
+      box-shadow: 0 4px 12px rgba(153, 0, 17, 0.2);
+    }
+    
+    /* Vegetarian tag with subtle animation */
+    .vegetarian-tag {
+      background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .vegetarian-tag:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    }
+    
+    /* Bestseller tag with golden gradient */
+    .bestseller-tag {
+      background: linear-gradient(135deg, #D4A017 0%, #FFD54F 100%);
+      color: #2A2A2A;
+    }
+    
+    /* Menu navigation underline animation */
+    .menu-nav-item {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: #990011;
+      transition: width 0.3s ease;
+    }
+    
+    .menu-nav-item:hover::after,
+    .menu-nav-item.active::after {
+      width: 80%;
+    }
+    
+    /* Floating action button */
+    .floating-btn {
+      box-shadow: 0 6px 20px rgba(153, 0, 17, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .floating-btn:hover {
+      transform: scale(1.1) rotate(10deg);
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Menu item price highlight */
+    .menu-price {
+      color: #990011;
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .menu-price::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #990011 0%, #D4A59A 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    
+    .menu-item:hover .menu-price::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  </style>
+</head>
+
+<body class="bg-light text-dark font-sans antialiased">
+
+  <!-- Navigationsmeny -->
+  <nav class="sticky top-0 w-full bg-white/95 shadow-sm py-4 z-50 backdrop-blur-md border-b border-gray-100">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <a href="pizzeriaVictoria.html">
+          <img src="PizzeriaVictoriaVec.svg" alt="Pizzeria Victoria" class="h-12 md:h-16 transition duration-300 hover:scale-105">
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-base">
+        <a href="menu.html" class="text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Meny</span>
+          <i class="fas fa-pizza-slice text-primary/80 transition-transform group-hover:rotate-45"></i>
+        </a>
+        <a href="#bestallning" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Beställ</span>
+          <i class="fas fa-motorcycle text-primary/80 transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="pizzeriaVictoria.html#omoss" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Om oss</span>
+          <i class="fas fa-store text-primary/80 transition-transform group-hover:scale-110"></i>
+        </a>
+        <a href="pizzeriaVictoria.html#oppettider" class="hover:text-primary font-medium transition duration-200 flex items-center gap-2 group">
+          <span class="group-hover:text-primary">Öppettider</span>
+          <i class="far fa-clock text-primary/80 transition-transform group-hover:rotate-45"></i>
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <a href="tel:013130204" class="bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-full font-bold transition duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 group">
+          <i class="fas fa-phone group-hover:animate-pulse"></i> 013-13 02 04
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="relative h-96 overflow-hidden bg-pattern">
+    <div class="absolute inset-0 hero-overlay z-10"></div>
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" 
+         alt="Pizzeria Victoria meny" class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
+
+      <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 animate-fade-in leading-tight">Vår meny</h1>
+
+      <p class="text-xl md:text-2xl text-white/90 max-w-2xl mb-8 animate-fade-in font-subheading">Autentisk italiensk pizza i hjärtat av Linköping sedan 1995</p>
+      
+      <div class="mt-8 animate-fade-in" style="animation-delay: 0.4s;">
+        <a href="#bestallning" class="inline-flex items-center bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-6 rounded-full transition duration-200 shadow-lg hover:shadow-xl group">
+          Beställ nu <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Navigation -->
+  <div class="sticky top-20 md:top-24 bg-white shadow-sm z-40 border-b border-gray-100">
+    <div class="container mx-auto px-4 overflow-x-auto">
+      <div class="flex space-x-6 py-4 justify-center overflow-x-auto snap-x snap-mandatory scroll-smooth">
+        <a href="#pizzor" class="menu-nav-item active snap-start whitespace-nowrap px-4 py-2 text-lg font-medium text-primary">
+          <i class="fas fa-pizza-slice mr-2"></i> Pizzor
+        </a>
+        <a href="#Kebabrätter" class="menu-nav-item whitespace-nowrap px-4 py-2 text-lg font-medium text-dark hover:text-primary">
+          <i class="fas fa-utensils mr-2"></i> Kebabrätter
+        </a>
+        <a href="#hamburgare" class="menu-nav-item whitespace-nowrap px-4 py-2 text-lg font-medium text-dark hover:text-primary">
+          <i class="fas fa-hamburger mr-2"></i> Hamburgare
+        </a>
+        <a href="#sallader" class="menu-nav-item whitespace-nowrap px-4 py-2 text-lg font-medium text-dark hover:text-primary">
+          <i class="fas fa-leaf mr-2"></i> Sallader
+        </a>
+        <a href="#tillbehor" class="menu-nav-item whitespace-nowrap px-4 py-2 text-lg font-medium text-dark hover:text-primary">
+          <i class="fas fa-bread-slice mr-2"></i> Tillbehör
+        </a>
+        <a href="#drycker" class="menu-nav-item whitespace-nowrap px-4 py-2 text-lg font-medium text-dark hover:text-primary">
+          <i class="fas fa-glass-cheers mr-2"></i> Drycker
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+    
+    <!-- Pizzor Section -->
+    <section id="pizzor" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-pizza-slice text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Våra Pizzor</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Handgjorda med italienskt mjöl och bakade i träeldad stenugn</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <!-- Klass 1 & 2 Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Klass 1 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <span class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+              <span class="text-primary font-bold">1</span>
+            </span>
+            Klass 1
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Margherita</span>
+                <p class="text-gray-500">Tomatsås och ost</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow mr-2">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Vesuvio</span>
+                <p class="text-gray-500">Tomatsås, ost och skinka</p>
+                <div class="mt-2">
+                  <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-star mr-1"></i> POPULÄR
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Al Funghi</span>
+                <p class="text-gray-500">Tomatsås, ost och färska champinjoner</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Bolognese</span>
+                <p class="text-gray-500">Tomatsås, ost och köttfärs</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Calzone</span>
+                <p class="text-gray-500">Inbakad. Tomatsås, ost och skinka</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Capricciosa</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka och färska champinjoner</p>
+                <div class="mt-2">
+                  <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-star mr-1"></i> POPULÄR
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Hawaii</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka och ananas</p>
+                <div class="mt-2">
+                  <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-star mr-1"></i> POPULÄR
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Tonno</span>
+                <p class="text-gray-500">Tomatsås, ost och tonfisk</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Paesana</span>
+                <p class="text-gray-500">Tomatsås, ost, bacon och lök</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Sorrento</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka och räkor</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Paradiso</span>
+                <p class="text-gray-500">Tomatsås, ost, räkor och färska champinjoner</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Salami</span>
+                <p class="text-gray-500">Tomatsås, ost och salami</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Klass 2 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <span class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+              <span class="text-primary font-bold">2</span>
+            </span>
+            Klass 2
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Honolulu</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka, ananas och banan</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Pepperonipizza</span>
+                <p class="text-gray-500">Tomatsås, ost, pepperonikorv och feferoni</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Roma</span>
+                <p class="text-gray-500">Tomatsås, ost, räkor, skinka och färska champinjoner</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Long John</span>
+                <p class="text-gray-500">Tomatsås, ost, räkor, skinka och tonfisk</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Quattro Stagioni</span>
+                <p class="text-gray-500">Tomatsås, ost, räkor, skinka, musslor, kronärtskocka och färska champinjoner</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Vegetaria</span>
+                <p class="text-gray-500">Tomatsås, ost, paprika, lök, oliver, kronärtskocka och färska champinjoner</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Italia</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka, lök och salami</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Du Chef</span>
+                <p class="text-gray-500">Tomatsås, ost, färska champinjoner, köttfärs, lök och tabasco</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Titanic</span>
+                <p class="text-gray-500">Tomatsås, ost, fläskfilé, tomater och bearnaisesås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mozzarellapizzor & Specialpizzor Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Mozzarellapizzor -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-cheese text-primary mr-3"></i> Mozzarellapizzor
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Parmapizza</span>
+                <p class="text-gray-500">Tomatsås, ost, parmaskinka, soltorkade tomater och ruccolasallad</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Milano</span>
+                <p class="text-gray-500">Tomatsås, ost, italiensk salami, marinerad vitlök, soltorkade tomater och ruccolasallad</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Palermo</span>
+                <p class="text-gray-500">Tomatsås, ost, currymarinerad fläskfilé, räkor, bearnaisesås, färska champinjoner och ruccolasallad</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Dedoo</span>
+                <p class="text-gray-500">Tomatsås, ost, färsk paprika, oxfilé, bearnaisesås, färska champinjoner och ruccolasallad</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Chania</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, fläskfilé, marinerad vitlök, färska tomater, ruccolasallad och bearnaisesås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Fyra Ostar</span>
+                <p class="text-gray-500">Tomatsås, ost, gorgonzolaost, ädelost, camembertost och ruccolasallad</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Specialpizzor -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-star text-primary mr-3"></i> Specialpizzor
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Kycklingpizza</span>
+                <p class="text-gray-500">Tomatsås, ost, kyckling, ananas, curry och banan</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Kebabpizza</span>
+                <p class="text-gray-500">Tomatsås, ost, kyckling, färska tomater, kebabkött (nötkött), feferoni, lök, isbergssallad, gurka och kebabsås mild</p>
+                <div class="mt-2">
+                  <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-star mr-1"></i> POPULÄR
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Kebabpizza Special</span>
+                <p class="text-gray-500">Tomatsås, ost, kyckling, skinka, färska tomater, kebabkött (nötkött), feferoni, lök och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Opera</span>
+                <p class="text-gray-500">Tomatsås, ost, salami, bacon, färska champinjoner och lök</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Victoria</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, färska champinjoner, räkor, vitlök och bearnaisesås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Capri Super</span>
+                <p class="text-gray-500">Tomatsås, ost, fläskfilé, skinka, färska champinjoner, räkor och banan</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Kycklingpizza Special</span>
+                <p class="text-gray-500">Tomatsås, ost, kyckling, färska champinjoner, färsk paprika, purjolök och vitlökssås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Viking</span>
+                <p class="text-gray-500">Inbakad. Tomatsås, ost, kyckling, färska tomater, kebabkött (nötkött), feferoni, lök, isbergssallad, gurka och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Gyrospizza</span>
+                <p class="text-gray-500">Tomatsås, ost, färska champinjoner, kebabkött (fläskkarré), feferoni, lök och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Falafelpizza</span>
+                <p class="text-gray-500">Tomatsås, ost, färska tomater, falafel, feferoni, lök och kebabsås mild</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Black & White</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, fläskfilé, färska champinjoner och bearnaisesås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Kajsa Varg</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, färska champinjoner, banan och bearnaisesås</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Biblos</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, skinka, färska tomater, vitlök och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">140 kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mexikanska Pizzor -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-12 hover:shadow-xl transition duration-300">
+        <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+          <i class="fas fa-pepper-hot text-primary mr-3"></i> Mexikanska Pizzor
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Mexiko Special</span>
+              <p class="text-gray-500">Tomatsås, ost, köttfärssås, pepperonikorv, färska champinjoner, jalapeños och tacokryddmix</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">140 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Azteka</span>
+              <p class="text-gray-500">Tomatsås, ost, skinka, purjolök, jalapeños, tacosås, gräddfil och tacokryddmix</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">140 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Tabasco</span>
+              <p class="text-gray-500">Tomatsås, ost, köttfärssås, bacon, lök, vitlök, jalapeños och tacokryddmix</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">140 kr</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Lyxpizzor & Amerikanska Panpizzor Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Lyxpizzor -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-crown text-primary mr-3"></i> Lyxpizzor
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Chévrepizza</span>
+                <p class="text-gray-500">Tomatsås, ost, getost och ruccolasallad</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">145 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Linköpings Pizza</span>
+                <p class="text-gray-500">Tomatsås, ost, kebabkött (nötkött), färska tomater, isbergssallad, gurka, lök och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">145 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">All In</span>
+                <p class="text-gray-500">Tomatsås, ost, kebabkött (nötkött), pommes frites, feferoni och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">145 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Deluxe</span>
+                <p class="text-gray-500">Tomatsås, ost, kebabkött (nötkött), kebabkött (fläskkarré), skinka och kebabsås mild</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">145 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Smögen</span>
+                <p class="text-gray-500">Tomatsås, ost, räkor, musslir, crabfish och vitlök</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">145 kr</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Amerikanska Panpizzor -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-flag-usa text-primary mr-3"></i> Amerikanska Panpizzor
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Acapulco</span>
+                <p class="text-gray-500">Tomatsås, ost, oxfilé, kantareller, vitlök, lök, tacosås och jalapeños</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Vegetarian Pan</span>
+                <p class="text-gray-500">Tomatsås, ost, färska champinjoner, färsk paprika, lök och oliver</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Miami</span>
+                <p class="text-gray-500">Tomatsås, ost, bacon, räkor, ananas och curry</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Arkansas</span>
+                <p class="text-gray-500">Tomatsås, ost, skinka, färska champinjoner, salami och färska tomater</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Dallas</span>
+                <p class="text-gray-500">Tomatsås, ost, pepperonikorv, vitlök, tacosås och jalapeños</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Amerikan Kebab</span>
+                <p class="text-gray-500">Tomatsås, ost, kebabkött (nötkött), feferoni och rödlök</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">130 kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kebabrätter Section -->
+    <section id="Kebabrätter" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-utensils text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Kebabrätter</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Autentiska kebabrätter med noga utvalda ingredienser</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+        <ul class="space-y-4">
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Bröd</span>
+              <p class="text-gray-500">Välj kebabkött, gyroskött, kyckling eller falafel i nästa steg</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">110 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Rulle</span>
+              <p class="text-gray-500">Välj kebabkött, gyroskött, kyckling eller falafel i nästa steg</p>
+              <div class="mt-2">
+                <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                  <i class="fas fa-star mr-1"></i> POPULÄR
+                </span>
+              </div>
+            </div>
+            <span class="font-semibold text-lg menu-price">110 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Tallrik Med Pommes Frites</span>
+              <p class="text-gray-500">Välj kebabkött, gyroskött, kyckling eller falafel i nästa steg</p>
+              <div class="mt-2">
+                <span class="bestseller-tag text-xs font-bold px-3 py-1 rounded-full shadow">
+                  <i class="fas fa-star mr-1"></i> POPULÄR
+                </span>
+              </div>
+            </div>
+            <span class="font-semibold text-lg menu-price">110 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Tallrik Med Ris</span>
+              <p class="text-gray-500">Välj kebabkött, gyroskött, kyckling eller falafel i nästa steg</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">110 kr</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Hamburgare Section -->
+    <section id="hamburgare" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-hamburger text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Hamburgare</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Ingår isbergssallad, färska tomater, saltgurka, ketchup, senap, lök och pommes frites</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-12 hover:shadow-xl transition duration-300">
+        <ul class="space-y-4">
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Hamburgertallrik 150 g</span>
+              <p class="text-gray-500">Välj dryck i nästa steg</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">110 kr</span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Á La Carte -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-12 hover:shadow-xl transition duration-300">
+        <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+          <i class="fas fa-utensils text-primary mr-3"></i> Á La Carte
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Schnitzel Lyx</span>
+              <p class="text-gray-500">Fylld med ost. Serveras med bearnaisesås och skinka. Välj tillbehör i nästa steg.</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">från 110 kr</span>
+          </li>
+          <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+            <div>
+              <span class="font-medium text-lg group-hover:text-primary transition">Rödspätta</span>
+              <p class="text-gray-500">Serveras med remouladsås. Välj tillbehör i nästa steg.</p>
+            </div>
+            <span class="font-semibold text-lg menu-price">från 110 kr</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sallader Section -->
+    <section id="sallader" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-leaf text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Sallader</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Ingår isbergssallad, färska tomater, smör, kebabsås mild och iskbakat bröd. Inkl. gratis dryck 33 cl. Skriv vilken dryck du önskar i 'Särskilda önskemål'.</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Sallad 1 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-drumstick-bite text-primary mr-3"></i> Kycklingsallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Kyckling, ananas och majs. Välj dryck i nästa steg.</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Sallad 2 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-cheese text-primary mr-3"></i> Grekisk Sallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Fetaost, färsk paprika, oliver och lök. Välj dryck i nästa steg.</p>
+                <div class="mt-2">
+                  <span class="vegetarian-tag text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <i class="fas fa-leaf mr-1"></i> VEGETARISK
+                  </span>
+                </div>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Sallad 3 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-fish text-primary mr-3"></i> Tonfisksallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Tonfisk, ananas, oliver och lök. Välj dryck i nästa steg.</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Sallad 4 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-utensils text-primary mr-3"></i> Kebabsallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Kebabkött (nötkött), lök och feferoni. Välj dryck i nästa steg.</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Sallad 5 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-bacon text-primary mr-3"></i> Gyrossallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Kebabkött (fläskkarré), lök och feferoni. Välj dryck i nästa steg.</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Sallad 6 -->
+        <div class="menu-item bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-seedling text-primary mr-3"></i> Svensk Sallad
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <p class="text-gray-500">Färska champinjoner, musslor, citron, sparris och majs. Välj dryck i nästa steg.</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">120 kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tillbehör Section -->
+    <section id="tillbehor" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-bread-slice text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Tillbehör</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Perfekta komplement till din måltid</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Tillbehör 1 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Vitlöksbröd</h3>
+              <span class="text-lg font-bold menu-price">35 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Färskbakad med vitlök och persilja</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Vitlök</span>
+              <span class="ingredient-chip">Persilja</span>
+              <span class="ingredient-chip">Olivolja</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tillbehör 2 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Pommes frites</h3>
+              <span class="text-lg font-bold menu-price">40 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Krispigt och gyllenbrunt</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Potatis</span>
+              <span class="ingredient-chip">Havssalt</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tillbehör 3 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Vitlökssås</h3>
+              <span class="text-lg font-bold menu-price">15 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Husets krämiga vitlökssås</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Vitlök</span>
+              <span class="ingredient-chip">Majonnäs</span>
+              <span class="ingredient-chip">Gräddfil</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tillbehör 4 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Chilimajonnäs</h3>
+              <span class="text-lg font-bold menu-price">15 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Kryddstark och smakrik</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Chili</span>
+              <span class="ingredient-chip">Majonnäs</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tillbehör 5 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Bea</h3>
+              <span class="text-lg font-bold menu-price">15 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Klassisk bearnaisesås</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Äggula</span>
+              <span class="ingredient-chip">Smör</span>
+              <span class="ingredient-chip">Vinäger</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tillbehör 6 -->
+        <div class="menu-item bg-white rounded-xl shadow-md overflow-hidden hover:border-primary/30 border-2 border-transparent transition-all duration-300">
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-2xl font-heading font-bold">Dipptallrik</h3>
+              <span class="text-lg font-bold menu-price">30 kr</span>
+            </div>
+            <p class="text-gray-600 mb-4">Vitlök, chili och bea</p>
+            <div class="flex flex-wrap">
+              <span class="ingredient-chip">Vitlökssås</span>
+              <span class="ingredient-chip">Chilimajonnäs</span>
+              <span class="ingredient-chip">Bea</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drycker Section -->
+    <section id="drycker" class="menu-category mb-24">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-6 animate-float">
+          <i class="fas fa-glass-cheers text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Drycker</h2>
+        <p class="max-w-2xl mx-auto text-gray-600 text-lg">Uppfriskande drycker till din måltid</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-wine-bottle text-primary mr-3"></i> Läsk
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Coca-Cola / Fanta / Sprite</span>
+                <p class="text-gray-500 text-sm">33cl flaska</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">25 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Loka</span>
+                <p class="text-gray-500 text-sm">50cl flaska</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">20 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Pepsi Max</span>
+                <p class="text-gray-500 text-sm">33cl burk</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">25 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">7Up Free</span>
+                <p class="text-gray-500 text-sm">33cl burk</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">25 kr</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
+          <h3 class="text-2xl font-heading font-bold mb-6 pb-4 border-b border-gray-200 flex items-center">
+            <i class="fas fa-wine-glass-alt text-primary mr-3"></i> Öl & Vin
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Folköl</span>
+                <p class="text-gray-500 text-sm">50cl flaska</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">45 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Stor stark</span>
+                <p class="text-gray-500 text-sm">50cl flaska</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">65 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Rött vin (glas)</span>
+                <p class="text-gray-500 text-sm">15cl, husets sortiment</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">65 kr</span>
+            </li>
+            <li class="flex justify-between items-center pb-4 border-b border-gray-100 group">
+              <div>
+                <span class="font-medium text-lg group-hover:text-primary transition">Vitt vin (glas)</span>
+                <p class="text-gray-500 text-sm">15cl, husets sortiment</p>
+              </div>
+              <span class="font-semibold text-lg menu-price">65 kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="bestallning" class="mb-20 bg-gradient-to-br from-primary to-dark rounded-2xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjEwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjEwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjMwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjMwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjUwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjUwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=')] opacity-10"></div>
+      <div class="relative max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">Beställ din pizza</h2>
+          <p class="text-xl text-white/90 max-w-2xl mx-auto">Hemskräddad smak som kommer direkt till dig</p>
+          <div class="section-divider bg-white mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300 group">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition">
+                <i class="fas fa-phone-alt text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-heading font-bold">Telefonbeställning</h3>
+            </div>
+            <p class="mb-6 text-white/90">Ring oss direkt för snabb beställning och avhämtning</p>
+            <a href="tel:013130204" class="inline-flex items-center justify-center bg-white text-primary font-bold py-4 px-8 rounded-full hover:bg-gray-50 transition duration-200 shadow-lg hover:scale-105 group-hover:animate-pulse">
+              <i class="fas fa-phone mr-2 group-hover:animate-pulse"></i> 013-13 02 04
+            </a>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:border-white/40 transition duration-300 group">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition">
+                <i class="fas fa-map-marker-alt text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-heading font-bold">Besök oss</h3>
+            </div>
+            <p class="mb-6 text-white/90">Upplev den autentiska italienska atmosfären i vår restaurang</p>
+            <a href="https://maps.google.com" target="_blank" class="inline-flex items-center justify-center bg-white text-primary font-bold py-4 px-8 rounded-full hover:bg-gray-50 transition duration-200 shadow-lg hover:scale-105">
+              <i class="fas fa-directions mr-2 group-hover:rotate-45 transition-transform"></i> Västra Vägen 3
+            </a>
+          </div>
+        </div>
+        
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <a href="index.html">
+            <img src="PizzeriaVictoriaVecWhite.png" alt="Pizzeria Victoria" class="h-16 mb-6 transition duration-300 hover:scale-105">
+          </a>
+          <p class="text-gray-400 text-lg">Autentisk italiensk pizza i hjärtat av Linköping sedan 1995.</p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Navigation</h3>
+          <ul class="space-y-3">
+            <li><a href="menu.html" class="text-white font-medium transition text-lg group">
+              <span class="group-hover:underline">Meny</span> <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </a></li>
+            <li><a href="index.html#bestallning" class="text-gray-400 hover:text-white transition text-lg group">
+              <span class="group-hover:underline">Beställning</span> <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </a></li>
+            <li><a href="index.html#omoss" class="text-gray-400 hover:text-white transition text-lg group">
+              <span class="group-hover:underline">Om oss</span> <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </a></li>
+            <li><a href="index.html#oppettider" class="text-gray-400 hover:text-white transition text-lg group">
+              <span class="group-hover:underline">Öppettider</span> <i class="fas fa-chevron-right ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Kontakt</h3>
+          <ul class="space-y-3 text-gray-400 text-lg">
+            <li class="flex items-center gap-3 hover:text-white transition">
+              <i class="fas fa-map-marker-alt text-primary"></i> Västra Vägen 3
+            </li>
+            <li class="flex items-center gap-3 hover:text-white transition">
+              <i class="fas fa-phone-alt text-primary"></i> 013-13 02 04
+            </li>
+            <li class="flex items-center gap-3 hover:text-white transition">
+              <i class="fas fa-envelope text-primary"></i> info@victoriapizza.se
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-heading font-bold mb-6">Följ oss</h3>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition text-xl hover:scale-110">
+              <i class="fab fa-tripadvisor"></i>
+            </a>
+          </div>
+          <div class="mt-6">
+            <h4 class="font-bold mb-3">Nyhetsbrev</h4>
+            <div class="flex">
+              <input type="email" placeholder="Din e-post" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+              <button class="bg-primary hover:bg-opacity-90 px-4 py-2 rounded-r-lg transition duration-200 hover:scale-105">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-500">
+        <p>&copy; <span id="current-year">2025</span> Pizzeria Victoria. Alla rättigheter förbehållna.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Button -->
+  <a href="tel:013130204" class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-xl hover:bg-opacity-90 transition z-50 floating-btn animate-pulse-slow">
+    <i class="fas fa-phone-alt text-2xl"></i>
+  </a>
+
+  <script>
+    // Current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Smooth scrolling for menu navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Update active state in navigation
+        document.querySelectorAll('.menu-nav-item').forEach(item => {
+          item.classList.remove('active', 'text-primary');
+          item.classList.add('text-dark');
+        });
+        this.classList.add('active', 'text-primary');
+        this.classList.remove('text-dark');
+      });
+    });
+    
+    // Highlight current section while scrolling
+    const sections = document.querySelectorAll('.menu-category');
+    const navItems = document.querySelectorAll('.menu-nav-item');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active', 'text-primary');
+        item.classList.add('text-dark');
+        
+        if (item.getAttribute('href') === `#${current}`) {
+          item.classList.add('active', 'text-primary');
+          item.classList.remove('text-dark');
+        }
+      });
+    });
+
+    // Dark mode toggle (optional)
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    darkModeToggle.className = 'fixed bottom-24 right-8 w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center shadow-xl z-50 hover:bg-opacity-90 transition';
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      darkModeToggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+    document.body.appendChild(darkModeToggle);
+  </script>
+</body>
+</html>
