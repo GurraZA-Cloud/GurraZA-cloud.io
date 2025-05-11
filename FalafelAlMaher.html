@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Falafel AlMaher | Autentisk Falafel i Linköping</title>
+  <meta name="description" content="Falafel AlMaher - Autentisk falafel med hemlagade recept i Linköping. Besök vår food truck för den bästa falafeln i stan!">
+  
+  <!-- Adobe Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/elm5esa.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          golden: 'rgb(252, 153, 53)', // New darker orange from Chef movie
+          lightgolden: 'rgb(255, 220, 76)', // Original golden for navbar
+          boldred: 'rgb(215, 38, 24)',
+          deepblue: 'rgb(0, 74, 110)',
+          palmgreen: 'rgb(44, 100, 53)',
+          white: 'rgb(255, 255, 255)',
+          orange: 'rgb(252, 153, 53)'
+        },
+        // ... rest of the config
+          fontFamily: {
+            brothers: ['brothers', 'sans-serif'],
+            sans: ['"Open Sans"', 'sans-serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1.5s ease-in',
+            'shake': 'shake 0.5s ease-in-out'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '25%': { transform: 'translateX(-5px)' },
+              '75%': { transform: 'translateX(5px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+    
+    body {
+        background-color: rgb(252, 153, 53); /* New darker orange */
+        color: rgb(0, 74, 110);
+        scroll-behavior: smooth;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    /* Brothers OT SuperSlant specific styling */
+    .font-brothers {
+      font-family: 'brothers', sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Concrete texture */
+    .concrete-texture {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.15;
+      mix-blend-mode: multiply;
+    }
+
+    /* Add this to make the golden overlay more vibrant */
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(252, 153, 53, 0.4) 100%);
+      z-index: 15;
+      mix-blend-mode: multiply;
+    }
+    
+    .food-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .food-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-text {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: rgb(215, 38, 24);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .red-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgb(215, 38, 24), transparent);
+    }
+    
+    .logo-container {
+      max-width: 420px;
+      margin: 0 auto;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    }
+    
+    .bg-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0V0zm10 10h80v80H10V10zM20 20h60v60H20V20zM30 30h40v40H30V30zM40 40h20v20H40V40z' fill='%23d72618' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    .floating-btn {
+      box-shadow: 0 8px 20px rgba(215, 38, 24, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .floating-btn:hover {
+      transform: scale(1.1);
+      animation: shake 0.5s ease-in-out;
+    }
+    
+    .scroll-indicator {
+      animation: bounce 3s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-15px);}
+      60% {transform: translateY(-7px);}
+    }
+    
+    .menu-item {
+      transition: all 0.3s ease;
+      border-bottom: 2px solid rgba(215, 38, 24, 0.2);
+    }
+    
+    .menu-item:hover {
+      transform: translateX(5px);
+      border-color: rgb(215, 38, 24);
+    }
+    
+    .pulse-effect {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(215, 38, 24, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(215, 38, 24, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(215, 38, 24, 0); }
+    }
+    
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: rgb(215, 38, 24);
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transform: rotate(15deg);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .hours-item {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .hours-item:hover {
+      background-color: rgba(255,255,255,0.3);
+      transform: translateX(5px);
+    }
+    
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 4px solid white;
+    }
+
+    /* New CSS Additions */
+    .text-stroke {
+    -webkit-text-stroke: 2px  rgba(0, 74, 110);
+    text-stroke: 2px rgba(0, 74, 110);
+    }
+
+    .cinematic-button {
+    box-shadow: 0 8px 32px rgba(215, 38, 24, 0.3);
+    position: relative;
+    overflow: hidden;
+    }
+
+    .cinematic-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    }
+
+    .cinematic-button:hover::before {
+    animation: shine 1.5s ease;
+    }
+
+    .cinematic-button {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .cinematic-button:hover {
+      transform: scale(1.05) translateY(-2px);
+    }
+
+    @keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .nav-link::after {
+    background-color: white;
+    }
+
+    .bg-pattern {
+    background-image: linear-gradient(45deg, #fc9935 25%, transparent 25%),
+                        linear-gradient(-45deg, #fc9935 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #fc9935 75%),
+                        linear-gradient(-45deg, transparent 75%, #fc9935 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <!-- Updated Navigationsmeny -->
+  <nav class="fixed top-0 w-full bg-gradient-to-b from-lightgolden/95 to-lightgolden/80 backdrop-blur-md z-40 shadow-lg transition-all duration-500 border-b-2 border-boldred/20">
+      <div class="container mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center gap-4">
+          <div class="text-4xl font-brothers font-bold text-boldred tracking-tight drop-shadow-md">FALAFEL ALMAHER</div>
+        </div>
+      
+      <div class="flex flex-wrap justify-center gap-10 text-lg mt-4 md:mt-0">
+        <a href="#meny" class="nav-link text-white hover:text-boldred font-medium transition duration-300 flex items-center gap-2 group">
+          <div class="w-2 h-2 bg-boldred rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+          Meny
+        </a>
+        <a href="#omoss" class="nav-link text-white hover:text-boldred font-medium transition duration-300 flex items-center gap-2 group">
+          <div class="w-2 h-2 bg-boldred rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+          Om oss
+        </a>
+        <a href="#oppettider" class="nav-link text-white hover:text-boldred font-medium transition duration-300 flex items-center gap-2 group">
+          <div class="w-2 h-2 bg-boldred rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+          Öppettider
+        </a>
+        <a href="#kontakt" class="nav-link text-white hover:text-boldred font-medium transition duration-300 flex items-center gap-2 group">
+          <div class="w-2 h-2 bg-boldred rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+          Hitta hit
+        </a>
+      </div>
+      
+      <div class="hidden md:block">
+        <a href="tel:0738715185" class="bg-boldred hover:bg-opacity-90 text-white font-medium px-8 py-4 rounded-full transition duration-300 flex items-center gap-3 group pulse-effect shadow-lg hover:shadow-boldred/30">
+          <i class="fas fa-phone transform group-hover:scale-125 transition"></i> 
+          <span class="transform group-hover:translate-x-1 transition">073-871 51 85</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero-bild Redesign -->
+  <!-- Hero Section -->
+  <div class="relative h-screen max-h-[90vh] overflow-hidden">
+    <!-- Background Image -->
+    <img 
+      src="FalafelAlMaherHero.jpeg" 
+      alt="Falafel AlMaher" 
+      class="absolute inset-0 w-full h-full object-cover object-center z-0"
+    >
+    
+  <!-- Overlay Layers -->
+  <div class="absolute inset-0 z-10">
+    <!-- Concrete Texture -->
+    <div class="concrete-texture absolute inset-0"></div>
+    
+    <!-- Golden Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-golden/60 via-golden/70 to-golden/95 mix-blend-multiply"></div>
+
+    <!-- Darkened Bottom Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-t from-golden/100 via-golden/70 to-golden/60"></div>
+    
+  </div>
+    
+    <!-- Content overlay -->
+    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
+
+      <!-- Subheading -->
+      <p class="text-3xl text-deepblue max-w-2xl mb-12 font-brothers drop-shadow-lg tracking-wide">
+        Linköpings mest prisvärda lunch
+      </p>
+      
+      <!-- Headline with cinematic effect -->
+      <div class="relative mb-8 space-y-8">
+        <h1 class="text-7xl md:text-9xl lg:text-[10rem] font-brothers font-bold text-boldred max-w-4xl mb-8 leading-[0.8] hero-text animate-fade-in">
+          <span class="text-stroke">FALAFEL</span>
+          <span class="block mt-4 text-6xl md:text-8xl text-boldred text-stroke">ALMAHER</span>
+        </h1>
+        <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-64 h-1 bg-boldred/80 blur-md"></div>
+      </div>
+
+      <!-- Subheading 2 -->
+      <p class="text-4xl text-deepblue max-w-2xl mb-12 font-brothers drop-shadow-lg tracking-wide">
+        Stångebro, Est. 2015
+      </p>
+      
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap gap-8 justify-center">
+        <a href="#meny" class="cinematic-button bg-lightgolden hover:bg-opacity-90 text-boldred font-bold py-6 px-14 rounded-full transition duration-300 flex items-center gap-3 group transform hover:scale-105">
+          <span class="transform group-hover:translate-x-1 transition">Se vår meny</span>
+          <i class="fas fa-utensils transform group-hover:rotate-12 transition"></i>
+        </a>
+        <a href="#kontakt" class="cinematic-button bg-white/90 hover:bg-boldred text-deepblue font-bold py-6 px-14 rounded-full transition duration-300 flex items-center gap-3 group transform hover:scale-105 shadow-xl">
+          <span class="transform group-hover:translate-x-1 transition">Hitta hit</span>
+          <i class="fas fa-map-marker-alt transform group-hover:scale-125 transition"></i>
+        </a>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#content-start" class="text-boldred text-3xl scroll-indicator hover:text-white transition">
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content anchor -->
+  <div id="content-start" class="pt-2"></div>
+
+  <!-- Huvudinnehåll -->
+  <main class="max-w-7xl mx-auto px-6 py-20">
+
+    <!-- Välkomsttext -->
+    <section class="mb-28 text-center max-w-5xl mx-auto">
+      <span class="inline-block text-boldred text-sm font-semibold mb-6 tracking-widest">
+        AUTENTISK SMÅK
+      </span>
+      <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-10 leading-tight text-deepblue">Välkommen till Falafel AlMaher</h2>
+      <div class="red-divider max-w-2xl mx-auto my-10"></div>
+      <p class="text-xl text-deepblue/80 mb-12 leading-relaxed max-w-4xl mx-auto">
+        I hjärtat av Linköping serverar vi autentisk falafel gjord på hemlagade recept med färska råvaror. 
+        Varje tugga bär på smaker från Mellanöstern och en passion för god mat.
+      </p>
+      <div class="flex justify-center">
+        <a href="#omoss" class="inline-flex items-center text-boldred font-medium group">
+          Upptäck vår historia
+          <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-2 transition duration-300"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Meny -->
+    <section id="meny" class="mb-32">
+      <div class="text-center mb-20">
+        <span class="inline-block text-boldred text-sm font-semibold mb-6 tracking-widest">
+          VÅR MENY
+        </span>
+        <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-8 leading-tight text-deepblue">Meny</h2>
+        <div class="red-divider max-w-xl mx-auto my-10"></div>
+        <p class="text-xl text-deepblue/70 max-w-3xl mx-auto">
+          Alla våra rätter tillagas med färska råvaror och hemlagade recept
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Falafelrätter -->
+        <div class="food-card bg-white rounded-lg overflow-hidden">
+          <div class="relative">
+            <img src="Falafelrulle2.jpeg" 
+                alt="Falafelrätter" class="w-full h-64 object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-deepblue/70 to-transparent"></div>
+            <h3 class="absolute bottom-0 left-0 right-0 text-3xl font-brothers font-bold text-white p-6">Falafelrätter</h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-4">
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Falafel i bröd</h4>
+                    <p class="text-sm text-deepblue/70">Falafel, sallad, tomat, gurka, hummus och tahinisås</p>
+                  </div>
+                  <span class="font-bold text-boldred">85 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Falafel tallrik</h4>
+                    <p class="text-sm text-deepblue/70">Falafel, ris, sallad, hummus, tahinisås och pitabröd</p>
+                  </div>
+                  <span class="font-bold text-boldred">95 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Falafel mix</h4>
+                    <p class="text-sm text-deepblue/70">Falafel, halloumi, sallad och valfri sås</p>
+                  </div>
+                  <span class="font-bold text-boldred">105 kr</span>
+                </div>
+              </li>
+              <li class="menu-item">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Falafel wrap</h4>
+                    <p class="text-sm text-deepblue/70">Falafel, sallad, tomat, gurka och valfri sås</p>
+                  </div>
+                  <span class="font-bold text-boldred">90 kr</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Tillbehör -->
+        <div class="food-card bg-white rounded-lg overflow-hidden">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1604977046806-9dcb2716d844?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                alt="Tillbehör" class="w-full h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-deepblue/70 to-transparent"></div>
+            <h3 class="absolute bottom-0 left-0 right-0 text-3xl font-brothers font-bold text-white p-6">Tillbehör</h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-4">
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Extra falafel (5 st)</h4>
+                    <p class="text-sm text-deepblue/70">Krispiga falafelbollar</p>
+                  </div>
+                  <span class="font-bold text-boldred">25 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Hummus</h4>
+                    <p class="text-sm text-deepblue/70">Hemlagad hummus</p>
+                  </div>
+                  <span class="font-bold text-boldred">30 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Pitabröd</h4>
+                    <p class="text-sm text-deepblue/70">Färskt pitabröd</p>
+                  </div>
+                  <span class="font-bold text-boldred">15 kr</span>
+                </div>
+              </li>
+              <li class="menu-item">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Såser</h4>
+                    <p class="text-sm text-deepblue/70">Tahini, vitlök eller chili</p>
+                  </div>
+                  <span class="font-bold text-boldred">10 kr</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Drycker -->
+        <div class="food-card bg-white rounded-lg overflow-hidden">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1604977046806-9dcb2716d844?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                alt="Drycker" class="w-full h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-deepblue/70 to-transparent"></div>
+            <h3 class="absolute bottom-0 left-0 right-0 text-3xl font-brothers font-bold text-white p-6">Drycker</h3>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-4">
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Läsk 33cl</h4>
+                    <p class="text-sm text-deepblue/70">Coca-cola, Fanta, Sprite</p>
+                  </div>
+                  <span class="font-bold text-boldred">25 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Vatten</h4>
+                    <p class="text-sm text-deepblue/70">Mineralvatten 33cl</p>
+                  </div>
+                  <span class="font-bold text-boldred">20 kr</span>
+                </div>
+              </li>
+              <li class="menu-item pb-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Ayran</h4>
+                    <p class="text-sm text-deepblue/70">Traditionell yoghurtdryck</p>
+                  </div>
+                  <span class="font-bold text-boldred">30 kr</span>
+                </div>
+              </li>
+              <li class="menu-item">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-lg text-deepblue">Kaffe/Te</h4>
+                    <p class="text-sm text-deepblue/70">Varm dryck</p>
+                  </div>
+                  <span class="font-bold text-boldred">25 kr</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Om oss -->
+    <section id="omoss" class="mb-32 py-24 bg-deepblue/10 relative overflow-hidden rounded-lg">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <span class="inline-block text-boldred text-sm font-semibold mb-6 tracking-widest">
+              VÅR HISTORIA
+            </span>
+            <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-10 leading-tight text-deepblue">Familjens hemliga recept</h2>
+            <div class="red-divider max-w-md my-10"></div>
+            <div class="space-y-6 text-lg text-deepblue/80">
+              <p>Falafel AlMaher grundades 2015 med ett enkelt mål - att servera den bästa falafeln i Linköping. Vårt recept har gått i arv i generationer och varje falafelboll tillagas med omsorg och passion.</p>
+              <p>Vi använder endast färska råvaror och alla våra såser och tillbehör tillagas från grunden. Vår falafel är helt vegetarisk och tillverkad av ekologiska kikärtor, färska örter och traditionella kryddor.</p>
+              <p>Välkommen till vår food truck där varje måltid är en smakupplevelse!</p>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-12">
+              <span class="inline-flex items-center gap-3 bg-white/30 px-6 py-3 rounded-full text-sm font-medium border border-boldred hover:bg-white/50 transition">
+                <i class="fas fa-check-circle text-boldred"></i> Familjerecept sedan 1985
+              </span>
+              <span class="inline-flex items-center gap-3 bg-white/30 px-6 py-3 rounded-full text-sm font-medium border border-boldred hover:bg-white/50 transition">
+                <i class="fas fa-check-circle text-boldred"></i> Ekologiska råvaror
+              </span>
+              <span class="inline-flex items-center gap-3 bg-white/30 px-6 py-3 rounded-full text-sm font-medium border border-boldred hover:bg-white/50 transition">
+                <i class="fas fa-check-circle text-boldred"></i> 100% vegetariskt
+              </span>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 relative rounded-lg overflow-hidden shadow-2xl h-[500px] border-4 border-white">
+            <div class="absolute inset-0 bg-gradient-to-t from-deepblue/70 via-deepblue/30 to-transparent z-10"></div>
+            <img src="FalafelHuset_Hero.jpeg" 
+                  alt="Vår food truck" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 p-10 z-20">
+              <div class="bg-white/90 backdrop-blur-sm border border-boldred text-deepblue p-8 max-w-md rounded-lg">
+                <h3 class="font-brothers text-3xl font-bold mb-3">Möt Vår Familj</h3>
+                <p class="mb-6 text-deepblue/80">AlMaher familjen står bakom varje falafelboll med stolthet och passion.</p>
+                <a href="#kontakt" class="inline-flex items-center text-boldred font-medium group">
+                  Besök oss
+                  <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-2 transition duration-300"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recensioner -->
+    <section class="mb-32">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+          <span class="inline-block text-boldred text-sm font-semibold mb-6 tracking-widest">
+            VÅRA KUNDERS RÖSTER
+          </span>
+          <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-8 leading-tight text-deepblue">Kundrecensioner</h2>
+          <div class="red-divider max-w-xl mx-auto my-10"></div>
+          <p class="text-xl text-deepblue/70 max-w-3xl mx-auto">
+            Vad våra nöjda kunder säger om oss
+          </p>
+        </div>
+        
+        <!-- Reviews Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Review 1 -->
+          <div class="testimonial-card p-8">
+            <div class="flex items-center mb-4">
+              <div class="text-boldred text-xl mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm text-deepblue/60 ml-auto">2 veckor sedan</span>
+            </div>
+            <p class="text-deepblue/80 mb-6 italic">"Bästa falafeln jag ätit i Linköping! Perfekt krispig utan att vara torr, och såserna är helt underbara."</p>
+            <div class="flex items-center">
+              <div class="w-14 h-14 rounded-full bg-white overflow-hidden mr-4 border-2 border-boldred">
+                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Emma Karlsson" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold text-deepblue">Emma Karlsson</h4>
+                <p class="text-sm text-deepblue/60">Nöjd kund</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Review 2 -->
+          <div class="testimonial-card p-8">
+            <div class="flex items-center mb-4">
+              <div class="text-boldred text-xl mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm text-deepblue/60 ml-auto">1 månad sedan</span>
+            </div>
+            <p class="text-deepblue/80 mb-6 italic">"Jag äter här minst en gång i veckan. Kvalitén är alltid toppen och personalen så trevlig!"</p>
+            <div class="flex items-center">
+              <div class="w-14 h-14 rounded-full bg-white overflow-hidden mr-4 border-2 border-boldred">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Anders Berg" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold text-deepblue">Anders Berg</h4>
+                <p class="text-sm text-deepblue/60">Återkommande kund</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Review 3 -->
+          <div class="testimonial-card p-8">
+            <div class="flex items-center mb-4">
+              <div class="text-boldred text-xl mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="text-sm text-deepblue/60 ml-auto">3 månader sedan</span>
+            </div>
+            <p class="text-deepblue/80 mb-6 italic">"Autentisk smak som påminner om min resa till Beirut. Rekommenderar falafel tallriken med extra hummus!"</p>
+            <div class="flex items-center">
+              <div class="w-14 h-14 rounded-full bg-white overflow-hidden mr-4 border-2 border-boldred">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Lisa Nordström" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-bold text-deepblue">Lisa Nordström</h4>
+                <p class="text-sm text-deepblue/60">Matentusiast</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Öppettider -->
+    <section id="oppettider" class="mb-32 bg-white rounded-lg border-4 border-boldred p-12 md:p-16">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-8 leading-tight text-deepblue">Besök Vår Food Truck</h2>
+          <div class="red-divider max-w-xl mx-auto my-10"></div>
+          <p class="text-xl text-deepblue/70 max-w-3xl mx-auto">
+            Vi står vid Stångebro i Linköping
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <h3 class="text-3xl font-brothers font-bold mb-8 text-deepblue">Öppettider</h3>
+            <ul class="space-y-4">
+              <li class="hours-item p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-deepblue">Måndag - Torsdag</span>
+                  <span class="font-semibold text-boldred">11:00 - 19:30</span>
+                </div>
+              </li>
+              <li class="hours-item p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-deepblue">Fredag</span>
+                  <span class="font-semibold text-boldred">11:00 - 19:30</span>
+                </div>
+              </li>
+              <li class="hours-item p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-deepblue">Lördag</span>
+                  <span class="font-semibold text-boldred">11:30 - 19:30</span>
+                </div>
+              </li>
+              <li class="hours-item p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-deepblue">Söndag</span>
+                  <span class="font-semibold text-deepblue/40">Stängt</span>
+                </div>
+              </li>
+            </ul>
+            
+            <div class="mt-12 bg-boldred/5 border border-boldred/20 rounded-lg p-8">
+              <p class="font-medium text-boldred"><i class="fas fa-info-circle mr-3"></i> Under sommarperioden kan öppettiderna variera - följ oss på sociala medier för uppdateringar</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-3xl font-brothers font-bold mb-8 text-deepblue">Kontaktinformation</h3>
+            <div class="space-y-8">
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                  <i class="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-xl text-deepblue mb-2">Plats</h4>
+                  <p class="text-deepblue/70 mb-3">Stångebro<br>582 26 Linköping</p>
+                  <a href="https://goo.gl/maps/example" target="_blank" class="inline-flex items-center text-boldred font-medium group">
+                    Visa på karta
+                    <i class="fas fa-external-link-alt ml-3 text-xs transform group-hover:translate-x-1 transition"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                  <i class="fas fa-phone-alt text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-xl text-deepblue mb-2">Telefon</h4>
+                  <p class="text-deepblue/70 mb-4">073-871 51 85</p>
+                  <a href="tel:0738715185" class="inline-flex bg-boldred text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition items-center gap-3">
+                    <i class="fas fa-phone"></i> 
+                    Ring oss direkt
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-6">
+                <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                  <i class="fas fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-xl text-deepblue mb-2">Sociala medier</h4>
+                  <p class="text-deepblue/70 mb-4">Följ oss för nyheter och erbjudanden</p>
+                  <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 bg-boldred text-white rounded-full flex items-center justify-center hover:bg-opacity-90 transition">
+                      <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-boldred text-white rounded-full flex items-center justify-center hover:bg-opacity-90 transition">
+                      <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="mb-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <span class="inline-block text-boldred text-sm font-semibold mb-6 tracking-widest">
+            KONTAKTA OSS
+          </span>
+          <h2 class="text-5xl md:text-6xl font-brothers font-bold mb-8 leading-tight text-deepblue">Hitta Hit</h2>
+          <div class="red-divider max-w-md my-10"></div>
+          <p class="text-xl text-deepblue/70 mb-10">
+            Vi står vid Stångebro i Linköping. Kom förbi och prova vår underbara falafel!
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                <i class="fas fa-map-marker-alt text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-xl text-deepblue mb-2">Adress</h4>
+                <p class="text-deepblue/70">Stångebro<br>582 26 Linköping</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                <i class="fas fa-phone-alt text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-xl text-deepblue mb-2">Telefon</h4>
+                <p class="text-deepblue/70">073-871 51 85</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="w-14 h-14 bg-boldred text-white rounded-full flex items-center justify-center mt-1">
+                <i class="fas fa-clock text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-xl text-deepblue mb-2">Öppettider</h4>
+                <p class="text-deepblue/70">Mån-Fre: 11:00-19:30<br>Lör: 11:30-19:30<br>Sön: Stängt</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2 map-container h-[500px]">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2079.869403873527!2d15.6012223159287!3d58.41090038124695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46596bc8b3b8e6d5%3A0x3e8a0d7c8a7a7a7a!2sSt%C3%A5ngebro%2C%20582%2026%20Link%C3%B6ping!5e0!3m2!1ssv!2sse!4v1620000000000!5m2!1ssv!2sse" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-deepblue text-white pt-24 pb-16 relative">
+    <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-boldred/10 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="text-3xl font-brothers font-bold text-white">FALAFEL ALMAHER</div>
+          </div>
+          <p class="text-white/60 mb-6">Autentisk falafel i Linköping sedan 2015.</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 bg-boldred hover:bg-opacity-90 rounded-full flex items-center justify-center transition text-white">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-boldred hover:bg-opacity-90 rounded-full flex items-center justify-center transition text-white">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6 uppercase tracking-wider text-white">Meny</h3>
+          <ul class="space-y-3">
+            <li><a href="#meny" class="text-white/60 hover:text-boldred transition flex items-center gap-3">
+              <i class="fas fa-chevron-right text-xs text-boldred"></i> Falafelrätter
+            </a></li>
+            <li><a href="#meny" class="text-white/60 hover:text-boldred transition flex items-center gap-3">
+              <i class="fas fa-chevron-right text-xs text-boldred"></i> Tillbehör
+            </a></li>
+            <li><a href="#meny" class="text-white/60 hover:text-boldred transition flex items-center gap-3">
+              <i class="fas fa-chevron-right text-xs text-boldred"></i> Drycker
+            </a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6 uppercase tracking-wider text-white">Kontakt</h3>
+          <ul class="space-y-4 text-white/60">
+            <li class="flex items-start gap-4">
+              <i class="fas fa-map-marker-alt mt-1 text-boldred"></i> 
+              <span>Stångebro<br>582 26 Linköping</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <i class="fas fa-phone-alt text-boldred"></i> 
+              <span>073-871 51 85</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6 uppercase tracking-wider text-white">Nyhetsbrev</h3>
+          <p class="text-white/60 mb-6">Prenumerera för erbjudanden och nyheter.</p>
+          <form class="flex">
+            <input type="email" placeholder="Din e-post" class="px-5 py-3 w-full rounded-l-full bg-white/10 text-white border border-boldred focus:ring-2 focus:ring-boldred focus:border-transparent placeholder-white/30">
+            <button type="submit" class="bg-boldred text-white px-5 rounded-r-full hover:bg-opacity-90 transition">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-boldred/30 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-white/40 text-sm mb-4 md:mb-0">
+          &copy; <span id="current-year">2025</span> Falafel AlMaher. Alla rättigheter förbehållna.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-white/40 hover:text-boldred text-sm transition">Integritetspolicy</a>
+          <a href="#" class="text-white/40 hover:text-boldred text-sm transition">Villkor</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating action button -->
+  <a href="tel:0738715185" class="fixed bottom-8 right-8 w-16 h-16 bg-boldred text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-opacity-90 transition z-50 floating-btn group">
+    <i class="fas fa-phone text-xl transform group-hover:scale-125 transition"></i>
+  </a>
+
+  <script>
+    // Add current year to footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.food-card, .testimonial-card, .menu-item');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(elementPosition < screenPosition) {
+          element.classList.add('animate-fade-in');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+
+</body>
+</html>
