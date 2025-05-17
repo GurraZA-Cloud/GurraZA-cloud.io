@@ -2,191 +2,441 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eurovision Rösta med Familjetopplistor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eurovision 2024 Voting</title>
     <style>
+        :root {
+            --primary: #0038b8;
+            --secondary: #f9a01b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1000px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f0f2f5;
+            padding: 0;
+            margin: 0;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 15px;
             margin: 0 auto;
-            padding: 20px;
         }
-
-        .participants {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .participant-card {
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .scoreboard {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .family-scoreboards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .family-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-
-        button {
-            background-color: #4CAF50;
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #0048d8);
             color: white;
-            padding: 8px 12px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--primary);
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .country-card {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+        
+        .country-card:active {
+            transform: scale(0.98);
+        }
+        
+        .country-flag {
+            width: 40px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .country-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .vote-btn {
+            background-color: var(--primary);
+            color: white;
             border: none;
             border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 0.8rem;
             cursor: pointer;
-            margin: 5px;
-        }
-
-        select {
-            padding: 5px;
-            margin: 5px 0;
             width: 100%;
+        }
+        
+        .scoreboard {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .scoreboard ol {
+            padding-left: 1.5rem;
+        }
+        
+        .scoreboard li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .scoreboard li:last-child {
+            border-bottom: none;
+        }
+        
+        .family-voting {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .family-member {
+            margin-bottom: 1.5rem;
+        }
+        
+        .family-member h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .top3-select {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        .toplist {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .toplist li {
+            padding: 0.3rem 0;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+                padding: 20px;
+            }
+            
+            .country-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .country-name {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Eurovision Song Contest 2024</h1>
+    <header>
+        <h1>Eurovision 2024 Voting</h1>
+    </header>
     
-    <div class="scoreboard">
-        <h2>Huvudpoängtavla</h2>
-        <ol id="scoreboardList"></ol>
-    </div>
-
-    <div class="participants" id="participantsContainer"></div>
-
-    <div class="family-scoreboards">
-        <!-- Carl Johan -->
-        <div class="family-card">
-            <h3> Carl-Johan </h3>
-            <form onsubmit="handleFamilyVote(event, 0)">
-                <select required class="rank1">
-                    <option value="">Välj 1:a plats</option>
-                </select>
-                <select required class="rank2">
-                    <option value="">Välj 2:a plats</option>
-                </select>
-                <select required class="rank3">
-                    <option value="">Välj 3:e plats</option>
-                </select>
-                <button type="submit">Spara röster</button>
-            </form>
-            <h4>Min topplista:</h4>
-            <ol id="family0"></ol>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('public-voting')">Public Voting</button>
+            <button class="tab" onclick="switchTab('family-voting')">Family Voting</button>
+            <button class="tab" onclick="switchTab('scoreboard')">Scoreboard</button>
         </div>
-
-        <!-- Ulrika -->
-        <div class="family-card">
-            <h3> Tindra </h3>
-            <form onsubmit="handleFamilyVote(event, 0)">
-                <select required class="rank1">
-                    <option value="">Välj 1:a plats</option>
-                </select>
-                <select required class="rank2">
-                    <option value="">Välj 2:a plats</option>
-                </select>
-                <select required class="rank3">
-                    <option value="">Välj 3:e plats</option>
-                </select>
-                <button type="submit">Spara röster</button>
-            </form>
-            <h4>Min topplista:</h4>
-            <ol id="family0"></ol>
+        
+        <div id="public-voting" class="tab-content active">
+            <h2>Vote for your favorite country</h2>
+            <div class="country-grid" id="participantsContainer"></div>
+            
+            <div class="scoreboard">
+                <h2>Current Scoreboard</h2>
+                <ol id="scoreboardList"></ol>
+            </div>
         </div>
-
-        <!-- Fem familjetopplistor -->
-        <div class="family-card">
-            <h3> Oscar </h3>
-            <form onsubmit="handleFamilyVote(event, 0)">
-                <select required class="rank1">
-                    <option value="">Välj 1:a plats</option>
-                </select>
-                <select required class="rank2">
-                    <option value="">Välj 2:a plats</option>
-                </select>
-                <select required class="rank3">
-                    <option value="">Välj 3:e plats</option>
-                </select>
-                <button type="submit">Spara röster</button>
-            </form>
-            <h4>Min topplista:</h4>
-            <ol id="family0"></ol>
+        
+        <div id="family-voting" class="tab-content">
+            <h2>Family Top 3 Voting</h2>
+            <p>Each family member can vote for their top 3 countries (12, 10, 8 points)</p>
+            
+            <div class="family-voting">
+                <div class="family-member">
+                    <h3>Carl-Johan</h3>
+                    <form onsubmit="handleFamilyVote(event, 0)">
+                        <div class="top3-select">
+                            <select required class="rank1">
+                                <option value="">1st place (12 points)</option>
+                            </select>
+                            <select required class="rank2">
+                                <option value="">2nd place (10 points)</option>
+                            </select>
+                            <select required class="rank3">
+                                <option value="">3rd place (8 points)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Votes</button>
+                    </form>
+                    <h4>Current Top 3:</h4>
+                    <ol class="toplist" id="family0"></ol>
+                </div>
+                
+                <div class="family-member">
+                    <h3>Tindra</h3>
+                    <form onsubmit="handleFamilyVote(event, 1)">
+                        <div class="top3-select">
+                            <select required class="rank1">
+                                <option value="">1st place (12 points)</option>
+                            </select>
+                            <select required class="rank2">
+                                <option value="">2nd place (10 points)</option>
+                            </select>
+                            <select required class="rank3">
+                                <option value="">3rd place (8 points)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Votes</button>
+                    </form>
+                    <h4>Current Top 3:</h4>
+                    <ol class="toplist" id="family1"></ol>
+                </div>
+                
+                <div class="family-member">
+                    <h3>Oscar</h3>
+                    <form onsubmit="handleFamilyVote(event, 2)">
+                        <div class="top3-select">
+                            <select required class="rank1">
+                                <option value="">1st place (12 points)</option>
+                            </select>
+                            <select required class="rank2">
+                                <option value="">2nd place (10 points)</option>
+                            </select>
+                            <select required class="rank3">
+                                <option value="">3rd place (8 points)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Votes</button>
+                    </form>
+                    <h4>Current Top 3:</h4>
+                    <ol class="toplist" id="family2"></ol>
+                </div>
+                
+                <div class="family-member">
+                    <h3>Ulrika</h3>
+                    <form onsubmit="handleFamilyVote(event, 3)">
+                        <div class="top3-select">
+                            <select required class="rank1">
+                                <option value="">1st place (12 points)</option>
+                            </select>
+                            <select required class="rank2">
+                                <option value="">2nd place (10 points)</option>
+                            </select>
+                            <select required class="rank3">
+                                <option value="">3rd place (8 points)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Votes</button>
+                    </form>
+                    <h4>Current Top 3:</h4>
+                    <ol class="toplist" id="family3"></ol>
+                </div>
+                
+                <div class="family-member">
+                    <h3>Gustav</h3>
+                    <form onsubmit="handleFamilyVote(event, 4)">
+                        <div class="top3-select">
+                            <select required class="rank1">
+                                <option value="">1st place (12 points)</option>
+                            </select>
+                            <select required class="rank2">
+                                <option value="">2nd place (10 points)</option>
+                            </select>
+                            <select required class="rank3">
+                                <option value="">3rd place (8 points)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Votes</button>
+                    </form>
+                    <h4>Current Top 3:</h4>
+                    <ol class="toplist" id="family4"></ol>
+                </div>
+            </div>
         </div>
-
-        <!-- Fem familjetopplistor -->
-        <div class="family-card">
-            <h3> Ulrika </h3>
-            <form onsubmit="handleFamilyVote(event, 0)">
-                <select required class="rank1">
-                    <option value="">Välj 1:a plats</option>
-                </select>
-                <select required class="rank2">
-                    <option value="">Välj 2:a plats</option>
-                </select>
-                <select required class="rank3">
-                    <option value="">Välj 3:e plats</option>
-                </select>
-                <button type="submit">Spara röster</button>
-            </form>
-            <h4>Min topplista:</h4>
-            <ol id="family0"></ol>
+        
+        <div id="scoreboard" class="tab-content">
+            <h2>Final Scoreboard</h2>
+            <div class="scoreboard">
+                <ol id="finalScoreboard"></ol>
+            </div>
         </div>
-
-        <!-- Fem familjetopplistor -->
-        <div class="family-card">
-            <h3> Gustav </h3>
-            <form onsubmit="handleFamilyVote(event, 0)">
-                <select required class="rank1">
-                    <option value="">Välj 1:a plats</option>
-                </select>
-                <select required class="rank2">
-                    <option value="">Välj 2:a plats</option>
-                </select>
-                <select required class="rank3">
-                    <option value="">Välj 3:e plats</option>
-                </select>
-                <button type="submit">Spara röster</button>
-            </form>
-            <h4>Min topplista:</h4>
-            <ol id="family0"></ol>
-        </div>
-
-
-        <!-- Upprepa för resterande 4 familjemedlemmar -->
-        <!-- Du kan kopiera ovanstående block 4 gånger och ändra index -->
     </div>
 
     <script>
-        // Initial data
-        let participants = [
-            { id: 1, name: "Tattoo", country: "Sverige", points: 0 },
-            { id: 2, name: "Cha Cha Cha", country: "Finland", points: 0 },
-            { id: 3, name: "Queen of Kings", country: "Norge", points: 0 },
+        // All Eurovision 2024 participating countries
+        const eurovisionCountries = [
+            { id: 1, country: "Albania", code: "al" },
+            { id: 2, country: "Armenia", code: "am" },
+            { id: 3, country: "Australia", code: "au" },
+            { id: 4, country: "Austria", code: "at" },
+            { id: 5, country: "Azerbaijan", code: "az" },
+            { id: 6, country: "Belgium", code: "be" },
+            { id: 7, country: "Croatia", code: "hr" },
+            { id: 8, country: "Cyprus", code: "cy" },
+            { id: 9, country: "Czechia", code: "cz" },
+            { id: 10, country: "Denmark", code: "dk" },
+            { id: 11, country: "Estonia", code: "ee" },
+            { id: 12, country: "Finland", code: "fi" },
+            { id: 13, country: "France", code: "fr" },
+            { id: 14, country: "Georgia", code: "ge" },
+            { id: 15, country: "Germany", code: "de" },
+            { id: 16, country: "Greece", code: "gr" },
+            { id: 17, country: "Iceland", code: "is" },
+            { id: 18, country: "Ireland", code: "ie" },
+            { id: 19, country: "Israel", code: "il" },
+            { id: 20, country: "Italy", code: "it" },
+            { id: 21, country: "Latvia", code: "lv" },
+            { id: 22, country: "Lithuania", code: "lt" },
+            { id: 23, country: "Luxembourg", code: "lu" },
+            { id: 24, country: "Malta", code: "mt" },
+            { id: 25, country: "Moldova", code: "md" },
+            { id: 26, country: "Netherlands", code: "nl" },
+            { id: 27, country: "Norway", code: "no" },
+            { id: 28, country: "Poland", code: "pl" },
+            { id: 29, country: "Portugal", code: "pt" },
+            { id: 30, country: "San Marino", code: "sm" },
+            { id: 31, country: "Serbia", code: "rs" },
+            { id: 32, country: "Slovenia", code: "si" },
+            { id: 33, country: "Spain", code: "es" },
+            { id: 34, country: "Sweden", code: "se" },
+            { id: 35, country: "Switzerland", code: "ch" },
+            { id: 36, country: "Ukraine", code: "ua" },
+            { id: 37, country: "United Kingdom", code: "gb" }
         ];
+
+        let participants = eurovisionCountries.map(country => ({
+            ...country,
+            points: 0
+        }));
 
         let familyTopLists = Array(5).fill().map(() => ({
             rankings: [],
             points: {}
         }));
 
-        // Ladda sparad data
+        // Tab switching
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            
+            if (tabId === 'scoreboard') {
+                renderFinalScoreboard();
+            }
+        }
+
+        // Data handling
         function loadData() {
             const savedData = localStorage.getItem('eurovisionData');
             if (savedData) {
@@ -196,45 +446,88 @@
             }
         }
 
-        // Spara data
         function saveData() {
-            const data = {
-                participants,
-                familyTopLists
-            };
+            const data = { participants, familyTopLists };
             localStorage.setItem('eurovisionData', JSON.stringify(data));
         }
 
-        // Initiera appen
+        // Initialization
         function initApp() {
             loadData();
-            populateSelects();
             renderParticipants();
+            populateSelects();
             renderScoreboard();
             renderAllFamilyLists();
         }
 
-        // Fyll i select-menyer
+        // Render functions
+        function renderParticipants() {
+            const container = document.getElementById('participantsContainer');
+            container.innerHTML = participants.map(p => `
+                <div class="country-card" onclick="vote(${p.id})">
+                    <img src="https://flagcdn.com/w40/${p.code}.png" 
+                         srcset="https://flagcdn.com/w80/${p.code}.png 2x"
+                         class="country-flag" 
+                         alt="${p.country}">
+                    <div class="country-name">${p.country}</div>
+                    <button class="vote-btn">Vote (${p.points})</button>
+                </div>
+            `).join('');
+        }
+
         function populateSelects() {
+            const optionsHTML = participants.map(p => 
+                `<option value="${p.id}">${p.country}</option>`
+            ).join('');
+            
             document.querySelectorAll('select').forEach(select => {
-                if (!select.innerHTML.includes('value="')) {
-                    select.innerHTML += participants.map(p => 
-                        `<option value="${p.id}">${p.country}</option>`
-                    ).join('');
+                if (select.options.length <= 1) {
+                    select.innerHTML += optionsHTML;
                 }
             });
         }
 
-        // Rösta direkt
-        function vote(participantId) {
-            const participant = participants.find(p => p.id === participantId);
-            participant.points += 1;
-            updateParticipant(participantId);
-            renderScoreboard();
-            saveData();
+        function renderScoreboard() {
+            const sorted = [...participants].sort((a, b) => b.points - a.points);
+            document.getElementById('scoreboardList').innerHTML = sorted
+                .slice(0, 10)
+                .map((p, i) => `<li>${i+1}. ${p.country} - ${p.points} points</li>`)
+                .join('');
         }
 
-        // Hantera familjeröstning
+        function renderFinalScoreboard() {
+            const sorted = [...participants].sort((a, b) => b.points - a.points);
+            document.getElementById('finalScoreboard').innerHTML = sorted
+                .map((p, i) => `<li>${i+1}. ${p.country} - ${p.points} points</li>`)
+                .join('');
+        }
+
+        function renderAllFamilyLists() {
+            familyTopLists.forEach((list, index) => {
+                const container = document.getElementById(`family${index}`);
+                if (container) {
+                    container.innerHTML = list.rankings
+                        .filter(id => participants.some(p => p.id === id))
+                        .map((id, i) => {
+                            const p = participants.find(p => p.id === id);
+                            return `<li>${i+1}. ${p.country} (${[12, 10, 8][i]}p)</li>`;
+                        })
+                        .join('');
+                }
+            });
+        }
+
+        // Voting functions
+        function vote(participantId) {
+            const participant = participants.find(p => p.id === participantId);
+            if (participant) {
+                participant.points += 1;
+                saveData();
+                renderParticipants();
+                renderScoreboard();
+            }
+        }
+
         function handleFamilyVote(event, familyIndex) {
             event.preventDefault();
             const form = event.target;
@@ -244,70 +537,40 @@
                 parseInt(form.querySelector('.rank3').value)
             ];
 
-            // Ta bort gamla poäng
-            const oldPoints = familyTopLists[familyIndex].points;
-            participants.forEach(p => {
-                p.points -= oldPoints[p.id] || 0;
-            });
+            // Validate unique selections
+            const validSelections = selections.filter(id => id);
+            if (new Set(validSelections).size !== validSelections.length) {
+                alert("Each position must have a unique country!");
+                return;
+            }
 
-            // Räkna nya poäng (12, 10, 8)
+            // Remove old points
+            const oldPoints = familyTopLists[familyIndex].points;
+            participants.forEach(p => p.points -= oldPoints[p.id] || 0);
+
+            // Add new points
             const newPoints = {};
             selections.forEach((id, index) => {
-                const points = [12, 10, 8][index];
                 if (id) {
+                    const points = [12, 10, 8][index];
                     newPoints[id] = points;
                     participants.find(p => p.id === id).points += points;
                 }
             });
 
-            // Uppdatera data
-            familyTopLists[familyIndex] = {
-                rankings: selections,
-                points: newPoints
-            };
-
-            // Uppdatera vyer
+            familyTopLists[familyIndex] = { rankings: selections, points: newPoints };
+            
+            // Update views
             renderAllFamilyLists();
             renderScoreboard();
+            renderParticipants();
             saveData();
+            
+            // Show confirmation
+            alert("Votes saved successfully!");
         }
 
-        // Rendera deltagare
-        function renderParticipants() {
-            const container = document.getElementById('participantsContainer');
-            container.innerHTML = participants.map(p => `
-                <div class="participant-card">
-                    <h3>${p.country}</h3>
-                    <p>${p.name}</p>
-                    <p>Poäng: <span class="points-${p.id}">${p.points}</span></p>
-                    <button onclick="vote(${p.id})">Ge 1 poäng</button>
-                </div>
-            `).join('');
-        }
-
-        // Rendera huvudtavla
-        function renderScoreboard() {
-            const sorted = [...participants].sort((a, b) => b.points - a.points);
-            const html = sorted.map(p => 
-                `<li>${p.country} - ${p.points} poäng</li>`
-            ).join('');
-            document.getElementById('scoreboardList').innerHTML = html;
-        }
-
-        // Rendera alla familjelistor
-        function renderAllFamilyLists() {
-            familyTopLists.forEach((list, index) => {
-                const container = document.getElementById(`family${index}`);
-                if (container) {
-                    container.innerHTML = list.rankings.filter(id => id).map(id => {
-                        const p = participants.find(p => p.id === id);
-                        return `<li>${p.country} (${list.points[id]}p)</li>`;
-                    }).join('');
-                }
-            });
-        }
-
-        // Starta appen
+        // Start the app
         window.onload = initApp;
     </script>
 </body>
