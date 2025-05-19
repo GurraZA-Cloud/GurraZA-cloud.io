@@ -260,6 +260,17 @@
         height: auto !important;
         min-height: 100vh;
       }
+
+      /* Add this to your style section */
+      .hero-section img {
+        min-height: 600px; /* Ensures image has minimum height on desktop */
+      }
+      
+      @media (max-width: 768px) {
+        .hero-section img {
+          min-height: auto; /* Reset for mobile */
+        }
+      }
       
       .hero-headline {
         font-size: 2.5rem !important;
